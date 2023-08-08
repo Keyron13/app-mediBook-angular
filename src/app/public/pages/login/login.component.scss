@@ -21,15 +21,31 @@ img{
   left: 0;
   right: 0;
   bottom: 0;
-  padding: 30px;
   margin: auto;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background: rgba(3,3,3,.8);
+  width: 100%;
+  height: 100%;
+  background: rgb(12, 100, 233);
+  background-image: url("https://res.cloudinary.com/duhm7ousd/image/upload/v1691526992/Imagenes-MediBook/img/fondo-2_he5zuu.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
-  opacity: 0.4;
-  box-shadow: 10px 10px 30px #000;}
+  z-index: 50;
+}
+
+
+
+.img-logo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 65%;
+  bottom: 0;
+  width: 350px;
+  height: 420px;
+  filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.7));
+  z-index: 200;}
+
 
 /* Login container */
 #container{
@@ -39,13 +55,36 @@ img{
   right: 0;
   bottom: 0;
   margin: auto;
-  width: 260px;
-  height: 260px;
-  border-radius: 5px;
-  background: rgba(3,3,3,0.25);
-  box-shadow: 1px 1px 50px #000;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  background-image: url("https://res.cloudinary.com/duhm7ousd/image/upload/v1691523501/Imagenes-MediBook/img/doctor-fondo-1_gyks0t.jpg");
+  background-size: cover;
+  background-position: start;
+  background-repeat: no-repeat;
   display: none;
+  z-index: 300;
 }
+
+
+.login{
+  position: absolute;
+  top: 200px;
+  left:65%;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  width: 380px;
+  height: 400px;
+  border-radius: 20px;
+  box-shadow: 10px 10px 30px #373533;
+  background: rgba(38, 34, 34, 0.607);
+  background-image: url("https://res.cloudinary.com/duhm7ousd/image/upload/v1691528328/Imagenes-MediBook/img/fondo_form_edi7lr.jpg");
+  background-size: cover;
+  background-position: start;
+  background-repeat: no-repeat;
+}
+
 
 .close-btn{
   position: absolute;
@@ -83,12 +122,14 @@ h1{
 /* Inputs */
 a,
 input{
+  border: 1px solid  ;
   font-family: 'Open Sans Condensed', sans-serif;
   text-decoration: none;
   position: relative;
-  width: 80%;
+  width: 90%;
   display: block;
-  margin: 9px auto;
+  margin: auto;
+  margin-bottom: 10px;
   font-size: 17px;
   color: #fff;
   padding: 8px;
@@ -99,6 +140,9 @@ input{
   -moz-transition: all 2s ease-in-out;
   -o-transition: all 2s ease-in-out;
   transition: all 0.2s ease-in-out;
+}
+input{
+  border: 1px solid;
 }
 
 input:focus{
@@ -119,14 +163,11 @@ input:focus{
 
 /* Link */
 a{
-  font-family: 'Open Sans Condensed', sans-serif;
-  text-align: center;
-  padding: 4px 8px;
-  background: rgba(107,255,3,0.3);
+
 }
 
 a:hover{
-  opacity: 0.7;
+  opacity: 0.9;
 }
 
 #remember-container{
@@ -209,4 +250,29 @@ a:hover{
 
 .orange-btn{
   background: rgba(87,198,255,.5);
+}
+
+label{
+  color: #fff;
+  font-size: 20pt;
+
+}
+
+form{
+  margin: 10px;
+}
+
+button{
+  width: 100%;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #2ecc70ac;
+  margin: auto;
+  margin-top: 10px;
+  height: 40px;
+  text-align: center;
+  font-family: 'Open Sans Condensed', sans-serif;
+  text-align: center;
+  padding: 4px 8px;
+  background: #2ecc70b4;
 }

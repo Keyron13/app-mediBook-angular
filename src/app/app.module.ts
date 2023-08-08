@@ -10,18 +10,21 @@ import { SpinnerInterceptor } from './core/shared/interceptor/spinner.intercepto
 import { PermissionGuard } from './core/shared/guards/permission/permission.guard';
 import { AuthService } from './public/services/auth.service';
 import { AuthGuard } from './core/shared/guards/auth/auth.guard';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
+
     }),
   ],
   providers: [

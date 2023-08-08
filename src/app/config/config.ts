@@ -1,5 +1,7 @@
+import { environment } from "src/enviroments/environment";
 
 export const config = {
-   apiUrl: "asdsa",
-   
+   apiUrl: environment.apiUrl,
+
+
 };

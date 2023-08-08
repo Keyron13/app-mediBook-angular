@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TweenMax, Sine } from 'gsap';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -7,8 +11,10 @@ import { TweenMax, Sine } from 'gsap';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  constructor(private readonly router: Router,private readonly authService: AuthService,
+    private formBuilder: FormBuilder,private notificacion:ToastrService,) {}
   ngOnInit(): void {
+    this.buildForm();
     const loginButton = document.querySelector('#login-button') as HTMLElement;
     const container = document.querySelector('#container') as HTMLElement;
     const closeButton = document.querySelector('.close-btn') as HTMLElement;
@@ -37,7 +43,29 @@ export class LoginComponent implements OnInit {
       container.style.display = 'none';
       forgottenContainer.style.display = 'block';
     });
+
   }
 
-
+FormLogin!: FormGroup;
+buildForm() {
+  this.FormLogin = this.formBuilder.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
+  });
+}
+Login(form: any) {
+  if (this.FormLogin.invalid) {
+    // Marcar los campos del formulario como tocados para mostrar los mensajes de error
+    Object.values(this.FormLogin.controls).forEach((control) =>
+      control.markAsTouched(),
+    );
+    return;
+  } else {
+    this.authService.login(form).subscribe((data) => {
+      this.authService.setToken(data.access_token);
+      this.notificacion.success("Inicio de sesión exitoso",'Proceso Exitoso');
+      this.router.navigate(['home']);
+    });
+  }
+}
 }

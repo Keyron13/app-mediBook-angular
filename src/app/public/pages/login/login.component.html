@@ -9,12 +9,36 @@
 
     <h1>Bienvenido <br> Administrador</h1>
 
-    <form>
-      <label for="">Correo:</label>
-      <input type="email" name="email">
-      <label for="">Contraseña:</label>
-      <input type="password" name="pass">
-      <button type="submit">Iniciar Sesión</button>
+    <form [formGroup]="FormLogin" (ngSubmit)="Login(FormLogin.value)">
+      <div class="correo-Electronico">
+        <label for="">Correo:</label>
+        <input type="email" name="email"  formControlName="email">
+        <div
+        *ngIf="FormLogin.get('email')?.invalid && FormLogin.get('email')?.touched">
+        <span *ngIf="FormLogin.get('email')?.hasError('required')"
+         style="color: red;"> Correo Electrónico Requerido.</span>
+        </div>
+        <div  *ngIf="FormLogin.get('email')?.hasError('email')" style="color: red;">
+          Se requiere un correo valido.
+       </div>
+      </div>
+      <div class="Password">
+        <label for="">Contraseña:</label>
+        <input type="password" name="pass"  formControlName="password">
+        <div  *ngIf="FormLogin.get('password')?.invalid && FormLogin.get('password')?.touched">
+          <span *ngIf="FormLogin.get('password')?.hasError('required')" style="color: red;"> Contraseña Requerido.</span>
+       </div>
+        <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
+      <div  *ngIf="FormLogin.get('password')?.hasError('minlength')" style="color: red;">
+      Nesecitas 5 Caracteres como Mínimo.
+      </div>
+      <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
+       <div
+      *ngIf="FormLogin.get('password')?.hasError('maxlength')" style="color: red;">
+      10 Caracteres como Máximo.
+      </div>
+    </div>
+      <button  type="submit" [disabled]="FormLogin.invalid" style="cursor: pointer;">Iniciar Sesión</button>
     </form>
 
   </div>

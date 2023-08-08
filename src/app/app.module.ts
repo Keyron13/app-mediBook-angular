@@ -4,6 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorInterceptor } from './core/shared/interceptor/auth.interceptor';
+import { SpinnerInterceptor } from './core/shared/interceptor/spinner.interceptor';
+import { PermissionGuard } from './core/shared/guards/permission/permission.guard';
+import { AuthService } from './public/services/auth.service';
+import { AuthGuard } from './core/shared/guards/auth/auth.guard';
 
 @NgModule({
   declarations: [
@@ -13,11 +19,27 @@ import { ToastrModule } from 'ngx-toastr';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
     }),
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SpinnerInterceptor,
+      multi: true,
+    },
+    PermissionGuard,
+    AuthService,
+    AuthGuard
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

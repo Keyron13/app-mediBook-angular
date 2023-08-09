@@ -11,6 +11,7 @@ import { PermissionGuard } from './core/shared/guards/permission/permission.guar
 import { AuthService } from './public/services/auth.service';
 import { AuthGuard } from './core/shared/guards/auth/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CoreModule } from './core/core.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
       positionClass: 'toast-top-right',
 
     }),
+    CoreModule
   ],
   providers: [
     {

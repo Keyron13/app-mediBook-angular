@@ -4,11 +4,14 @@ import { CommonModule } from '@angular/common';
 import {  HttpClientModule } from '@angular/common/http';
 
 import { RouterModule } from '@angular/router';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 
 //componentes
 
 @NgModule({
   declarations: [
+
+    SpinnerComponent
   ],
   imports: [
     RouterModule,
@@ -18,6 +21,8 @@ import { RouterModule } from '@angular/router';
   exports:[
     RouterModule,
     HttpClientModule,
+    SpinnerComponent
+
   ],
   providers:[
 

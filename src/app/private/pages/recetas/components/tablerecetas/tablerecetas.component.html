@@ -20,6 +20,7 @@
     </tr>
     <tbody *ngIf="recetas">
       <tr *ngFor="let receta of recetas | filter:term">
+      <ng-container *ngIf="receta.cita" >
         <td>
           {{ receta.cita.paciente.usuario.datospersonale.ci  }}
         </td>
@@ -57,6 +58,48 @@
         <td>
           {{receta.cita.titulo|titlecase}}
         </td>
+      </ng-container>
+      <ng-container *ngIf="receta.cita_observacion" >
+        <td>
+          {{ receta.paciente.usuario.datos_personale.ci  }}
+        </td>
+        <td>
+          {{ receta.paciente.usuario.nombre | titlecase }}
+          {{ receta.paciente.usuario.apellido | titlecase }}
+        </td>
+        <td>
+          {{ receta.paciente.usuario.datos_personale.telefono | titlecase }}
+        </td>
+       <td> {{ receta.medico.usuario.datos_personale.ci  }}</td>
+
+        <td>
+          {{ receta.medico.usuario.nombre | titlecase }}
+          {{ receta.medico.usuario.apellido | titlecase }}
+        </td>
+        <td>
+          {{ receta.medico.usuario.datos_personale.telefono | titlecase }}
+        </td>
+        <td>
+          {{ receta.medico.especialidad.nombre | titlecase }}
+        </td>
+        <td>
+          {{ receta.fecha | date }}
+        </td>
+        <ng-container *ngFor="let re of receta.receta">
+          <td>
+            {{re.cantidad}}
+          </td>
+          <td>
+            {{re.lapso_tiempo}}
+          </td>
+          <td>
+            {{re.nombre_medicamento|titlecase}}
+          </td>
+        </ng-container>
+        <td>
+          {{receta.titulo|titlecase}}
+        </td>
+      </ng-container>
       </tr>
     </tbody>
     <!-- Agrega más filas según sea necesario -->

@@ -1,7 +1,7 @@
 
 
 <div class="table-container">
-  <div class="input-group" style="width: 50%;margin: 0 auto;">
+  <div class="input-group" style="width: 50%;margin: 0 auto;" *ngIf="user.rol_id==1">
     <label for="date">Buscar:</label>
     <input type="text" [(ngModel)]="term" />
   </div>
@@ -17,9 +17,10 @@
           <th>Dia</th>
           <th>Hora inicio</th>
           <th>Hora fin</th>
+          <th *ngIf="user.rol_id==1">Acciones</th>
       </tr>
       <tbody *ngIf="horarios">
-      <tr *ngFor="let horario of horarios">
+      <tr *ngFor="let horario of horarios|filter:term">
         <td>
           {{horario.medico.usuario.nombre|titlecase}}
         </td>
@@ -50,7 +51,7 @@
         <td>
           {{horario.hora_fin}}
         </td>
-          <td>
+          <td *ngIf="user.rol_id==1">
             <button (click)="edit(horario.id)">Editar</button>
             <button (click)="delete(horario.id)">Eliminar</button>
           </td>

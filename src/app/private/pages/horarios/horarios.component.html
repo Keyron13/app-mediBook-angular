@@ -1,6 +1,6 @@
 
-<body>
-    <div class="container">
+<body *ngIf="user.rol_id==1">
+    <div class="container" >
         <h2>Horarios Para medicos</h2>
         <form [formGroup]="FormLogin" (ngSubmit)="Horario()">
             <div class="input-group">
@@ -60,4 +60,4 @@
       </div>
 
 </body>
-<app-table-horarios [horarios]="horarios"/>
+<app-table-horarios [horarios]="horarios" [user]="user" />

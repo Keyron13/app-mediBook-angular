@@ -65,7 +65,7 @@ export class AuthInterceptorInterceptor implements HttpInterceptor {
 
             });
           }else{
-            this.notificacion.error(error.error.error, 'Proceso Erroneo');
+            this.notificacion.error(error.error.message, 'Proceso Erroneo');
           }
           /*  this.router.navigate(['login']); */
         }

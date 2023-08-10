@@ -12,6 +12,7 @@ import { AuthService } from './public/services/auth.service';
 import { AuthGuard } from './core/shared/guards/auth/auth.guard';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,9 +26,10 @@ import { CoreModule } from './core/core.module';
     FormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
-
+      timeOut:1500
     }),
-    CoreModule
+    CoreModule,
+    BrowserAnimationsModule
   ],
   providers: [
     {

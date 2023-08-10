@@ -6,7 +6,7 @@
       alt=""/>
     <h1 class="texto-none">MediBook</h1>
   </button>
-
+  <h5 *ngIf="user" >Hola {{user?.nombre+" "+user?.apellido|titlecase}} </h5>
   <div class="componente">
     <button class="boton"
     [routerLink]="['/home']">
@@ -14,17 +14,17 @@
       <h2 class="texto-none-todo">Inicio</h2>
     </button>
 
-    <button class="boton"[routerLink]="['/medicos']">
+    <button *ngIf="user?.rol_id===1" class="boton"[routerLink]="['/medicos']">
         <i class="input-icon uil uil-user"></i>
       <h2 class="texto-none-todo">Medicos</h2>
     </button>
-    <div>
+    <div *ngIf="user?.rol_id===1">
         <button class="boton">
           <i class="input-icon uil uil-edit"></i>
           <h2 class="texto-none-todo">Especialidad</h2>
         </button>
       </div>
-      <div>
+      <div *ngIf="user?.rol_id===1">
         <button class="boton" [routerLink]="['/titulos']">
           <i class="input-icon uil uil-file-alt"></i>
           <h2 class="texto-none-todo">Titulo</h2>
@@ -72,13 +72,13 @@
         </button>
       </div>
 
-    <button class="boton abrir" style="margin: 0%">
+    <button (click)="logout()"  class="boton abrir" style="margin: 0%">
       <i class="input-icon uil uil-arrow-to-right"></i>
       <h2 class="texto-none-todo">Salir</h2>
     </button>
   </div>
 
-  <button class="boton cerrar" style="margin: 0%">
+  <button (click)="logout()"  class="boton cerrar" style="margin: 0%">
     <i class="input-icon uil uil-arrow-to-right"></i>
     <h2 class="texto-none-todo">Salir</h2>
   </button>

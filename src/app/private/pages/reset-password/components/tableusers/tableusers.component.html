@@ -1,0 +1,61 @@
+
+
+<div class="table-container">
+  <div class="input-group" style="width: 50%;margin: 0 auto;">
+    <label for="date">Buscar:</label>
+    <input type="text" [(ngModel)]="term" />
+  </div>
+  <table>
+      <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Cédula</th>
+          <th>Cantón</th>
+          <th>Provincia</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Rol</th>
+          <th>Acciones</th>
+      </tr>
+      <tbody *ngIf="users">
+      <tr *ngFor="let user of users|filter:term">
+          <td>
+            {{user.usuario.nombre|titlecase}}
+          </td>
+          <td>
+            {{user.usuario.apellido|titlecase}}
+          </td>
+          <td>
+            {{user.usuario.datos_personale.ci|titlecase}}
+          </td>
+          <td>
+            {{user.usuario.ubicacion.canton|titlecase}}
+          </td>
+          <td>
+            {{user.usuario.ubicacion.provincia|titlecase}}
+          </td>
+          <td>
+            {{user.usuario.datos_personale.telefono}}
+          </td>
+          <td>
+            {{user.usuario.email}}
+          </td>
+          <td>
+            {{user.usuario.rol.nombre|titlecase}}
+          </td>
+          <td>
+            {{user.nombre|titlecase}}
+          </td>
+          <td>
+            {{user.fecha|date}}
+          </td>
+          <td>
+            <button (click)="seleccion(user.usuario.id)">Seleccionar</button>
+          </td>
+
+      </tr>
+    </tbody>
+
+      <!-- Agrega más filas según sea necesario -->
+  </table>
+</div>

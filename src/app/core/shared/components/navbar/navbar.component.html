@@ -18,8 +18,8 @@
         <i class="input-icon uil uil-user"></i>
       <h2 class="texto-none-todo">Medicos</h2>
     </button>
-    <div *ngIf="user?.rol_id===1">
-        <button class="boton">
+    <div *ngIf="user?.rol_id===1" >
+        <button class="boton" [routerLink]="['especialidad']">
           <i class="input-icon uil uil-edit"></i>
           <h2 class="texto-none-todo">Especialidad</h2>
         </button>

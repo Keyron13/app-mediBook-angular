@@ -1,1 +1,28 @@
-<p>tableespecialidad works!</p>
+
+
+<div class="table-container">
+  <div class="input-group" style="width: 50%;margin: 0 auto;">
+    <label for="date">Buscar:</label>
+    <input type="text" [(ngModel)]="term" />
+  </div>
+  <table>
+      <tr>
+          <th>Nombre</th>
+          <th>Acciones</th>
+      </tr>
+      <tbody *ngIf="especialidades">
+      <tr *ngFor="let especialidad of especialidades|filter:term">
+          <td>
+            {{especialidad.nombre|titlecase}}
+          </td>
+          <td>
+            <button (click)="edit(especialidad.id)">Editar</button>
+            <button (click)="delete(especialidad.id)">Eliminar</button>
+          </td>
+
+      </tr>
+    </tbody>
+
+      <!-- Agrega más filas según sea necesario -->
+  </table>
+</div>

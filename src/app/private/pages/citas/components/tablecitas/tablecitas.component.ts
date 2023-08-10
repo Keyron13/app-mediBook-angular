@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tablecitas',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tablecitas.component.scss']
 })
 export class TablecitasComponent {
-
+term!:string
+@Input() citas!:any
 }

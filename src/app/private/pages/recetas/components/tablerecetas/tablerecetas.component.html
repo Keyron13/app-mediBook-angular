@@ -1,2 +1,64 @@
-<p>tablerecetas works!</p>
-<app-tablerecetas/>
+<div class="table-container">
+  <div class="input-group" style="width: 50%; margin: 0 auto">
+    <label for="date">Buscar:</label>
+    <input type="text" [(ngModel)]="term" />
+  </div>
+  <table>
+    <tr>
+      <th>CI Paciente</th>
+      <th>Nombres Paciente</th>
+      <th>Telefono Paciente</th>
+      <th>CI Medico</th>
+      <th>Nombres Medico</th>
+      <th>Telefono Medico</th>
+      <th>Especialidad</th>
+      <th>Fecha</th>
+      <th>Cantidad medicamento</th>
+      <th>Lapso de tiempo</th>
+      <th>Nombre medicamento</th>
+      <th>Cita</th>
+    </tr>
+    <tbody *ngIf="recetas">
+      <tr *ngFor="let receta of recetas | filter:term">
+        <td>
+          {{ receta.cita.paciente.usuario.datospersonale.ci  }}
+        </td>
+        <td>
+          {{ receta.cita.paciente.usuario.nombre | titlecase }}
+          {{ receta.cita.paciente.usuario.apellido | titlecase }}
+        </td>
+        <td>
+          {{ receta.cita.paciente.usuario.datospersonale.telefono | titlecase }}
+        </td>
+       <td> {{ receta.cita.medico.usuario.datospersonale.ci  }}</td>
+
+        <td>
+          {{ receta.cita.medico.usuario.nombre | titlecase }}
+          {{ receta.cita.medico.usuario.apellido | titlecase }}
+        </td>
+        <td>
+          {{ receta.cita.medico.usuario.datospersonale.telefono | titlecase }}
+        </td>
+        <td>
+          {{ receta.cita.medico.especialidad.nombre | titlecase }}
+        </td>
+        <td>
+          {{ receta.cita.fecha | date }}
+        </td>
+        <td>
+          {{receta.cantidad}}
+        </td>
+        <td>
+          {{receta.lapso_tiempo}}
+        </td>
+        <td>
+          {{receta.nombre_medicamento|titlecase}}
+        </td>
+        <td>
+          {{receta.cita.titulo|titlecase}}
+        </td>
+      </tr>
+    </tbody>
+    <!-- Agrega más filas según sea necesario -->
+  </table>
+</div>

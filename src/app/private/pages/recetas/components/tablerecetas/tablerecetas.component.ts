@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tablerecetas',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tablerecetas.component.scss']
 })
 export class TablerecetasComponent {
-
+  term!:string
+  @Input() recetas!:any
 }

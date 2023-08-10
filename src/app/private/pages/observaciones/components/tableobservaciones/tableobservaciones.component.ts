@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tableobservaciones',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tableobservaciones.component.scss']
 })
 export class TableobservacionesComponent {
-
+  term!:string
+  @Input() observaciones!:any
 }

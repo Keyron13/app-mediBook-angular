@@ -17,7 +17,7 @@ const routes: Routes = [
 
  {path:'',
  loadChildren:()=> import('./public/public.module').then(m=> m.PublicModule),
-  canActivate:[PermissionGuard] 
+  canActivate:[PermissionGuard]
 },
 
 
@@ -32,7 +32,8 @@ const routes: Routes = [
 
 //Error 404
 {path:'**',
-    redirectTo:'/'}
+    redirectTo:'/',
+  pathMatch:'full'}
 ];
 
 @NgModule({

@@ -19,6 +19,12 @@ import { PrivateComponent } from './private.component';
 import { NavbarComponent } from '../core/shared/components/navbar/navbar.component';
 import { TableTitulosComponent } from './pages/titulos/components/table-titulos/table-titulos.component';
 import { TableHorariosComponent } from './pages/horarios/components/table-horarios/table-horarios.component';
+import { TablecitasComponent } from './pages/citas/components/tablecitas/tablecitas.component';
+import { TableespecialidadComponent } from './pages/especialidad/components/tableespecialidad/tableespecialidad.component';
+import { TableobservacionesComponent } from './pages/observaciones/components/tableobservaciones/tableobservaciones.component';
+import { TablepagosComponent } from './pages/pagos/components/tablepagos/tablepagos.component';
+import { TablerecetasComponent } from './pages/recetas/components/tablerecetas/tablerecetas.component';
+import { TablereseniasComponent } from './pages/resenias/components/tableresenias/tableresenias.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -36,6 +42,12 @@ import { TableHorariosComponent } from './pages/horarios/components/table-horari
     NavbarComponent,
     TableTitulosComponent,
     TableHorariosComponent,
+    TablecitasComponent,
+    TableespecialidadComponent,
+    TableobservacionesComponent,
+    TablepagosComponent,
+    TablerecetasComponent,
+    TablereseniasComponent
   ],
   imports: [
     CommonModule,

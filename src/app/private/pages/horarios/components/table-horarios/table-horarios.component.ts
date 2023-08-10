@@ -9,6 +9,8 @@ import { HorarioService } from 'src/app/private/services/horario.service';
   styleUrls: ['./table-horarios.component.scss']
 })
 export class TableHorariosComponent {
+  term!:string
+
   @Input() horarios:any;
   constructor(private horarioService:HorarioService,private toastService:ToastrService,private eventEmitter:EventEmitterService){
   }

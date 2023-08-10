@@ -9,6 +9,7 @@ import { TituloService } from 'src/app/private/services/titulo.service';
   styleUrls: ['./table-titulos.component.scss']
 })
 export class TableTitulosComponent {
+  term!:string
   @Input() titulos:any;
   constructor(private tituloService:TituloService,private toastService:ToastrService,private eventEmitter:EventEmitterService){
   }

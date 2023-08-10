@@ -25,6 +25,8 @@ import { TableobservacionesComponent } from './pages/observaciones/components/ta
 import { TablepagosComponent } from './pages/pagos/components/tablepagos/tablepagos.component';
 import { TablerecetasComponent } from './pages/recetas/components/tablerecetas/tablerecetas.component';
 import { TablereseniasComponent } from './pages/resenias/components/tableresenias/tableresenias.component';
+import { TableusersComponent } from './pages/reset-password/components/tableusers/tableusers.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -47,7 +49,8 @@ import { TablereseniasComponent } from './pages/resenias/components/tableresenia
     TableobservacionesComponent,
     TablepagosComponent,
     TablerecetasComponent,
-    TablereseniasComponent
+    TablereseniasComponent,
+    TableusersComponent
   ],
   imports: [
     CommonModule,
@@ -56,6 +59,7 @@ import { TablereseniasComponent } from './pages/resenias/components/tableresenia
     ReactiveFormsModule,
     FormsModule,
     SharedModule,
+    Ng2SearchPipeModule
   ]
 })
 export class PrivateModule { }

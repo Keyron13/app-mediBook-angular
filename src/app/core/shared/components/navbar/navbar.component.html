@@ -71,6 +71,12 @@
           <h2 class="texto-none-todo">Reseñas</h2>
         </button>
       </div>
+      <div *ngIf="user?.rol_id===1">
+        <button class="boton" [routerLink]="['reset-password']"  >
+          <i class="input-icon uil uil-file-blank"></i>
+          <h2 class="texto-none-todo">Reset Password</h2>
+        </button>
+      </div>
 
     <button (click)="logout()"  class="boton abrir" style="margin: 0%">
       <i class="input-icon uil uil-arrow-to-right"></i>

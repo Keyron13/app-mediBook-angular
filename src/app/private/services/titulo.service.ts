@@ -24,6 +24,6 @@ export class TituloService {
     return this.http.put<any>(`${this.api}titulos/${id}`,body);
   }
   delete(id:any):Observable<any>{
-    return this.http.delete<any>(`${this.api}tititulos/${id}`);
+    return this.http.delete<any>(`${this.api}titulos/${id}`);
   }
 }

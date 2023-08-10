@@ -62,7 +62,8 @@
           >El Medico es Requerido.</span
         >
       </div>
-      <button [disabled]="!FormTitulo.valid" class="button" type="submit">Enviar</button>
+      <button [disabled]="!FormTitulo.valid" class="button" type="submit"> {{titulo_id?'Editar':'Guardar'}} </button>
     </form>
   </div>
 </body>
+<app-table-titulos [titulos]="titulos" />

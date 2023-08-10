@@ -31,6 +31,8 @@ export class TitulosComponent {
       if (data.user.rol_id !== 1) {
         this.router.navigate(['home']);
       }
+    },()=>{
+      this.router.navigate(['home']);
     });
 
     this.medicos = this.medicoService
@@ -76,6 +78,7 @@ export class TitulosComponent {
         this.getTitulos();
 
         this.FormTitulo.reset();
+
       });
     }
   }
@@ -103,6 +106,8 @@ export class TitulosComponent {
         fecha: data.titulos.fecha,
         medico_id: data.titulos.medico_id,
       });
+    this.FormTitulo.get('medico_id')?.disable();
+
     });
 
   }
@@ -112,6 +117,8 @@ export class TitulosComponent {
         this.getTitulos();
         this.FormTitulo.reset();
         this.titulo_id=null;
+    this.FormTitulo.get('medico_id')?.enable();
+
       })
   }
 }

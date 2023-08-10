@@ -18,6 +18,7 @@ import { ReseniasComponent } from './pages/resenias/resenias.component';
 import { PrivateComponent } from './private.component';
 import { NavbarComponent } from '../core/shared/components/navbar/navbar.component';
 import { TableTitulosComponent } from './pages/titulos/components/table-titulos/table-titulos.component';
+import { TableHorariosComponent } from './pages/horarios/components/table-horarios/table-horarios.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -34,6 +35,7 @@ import { TableTitulosComponent } from './pages/titulos/components/table-titulos/
     PrivateComponent,
     NavbarComponent,
     TableTitulosComponent,
+    TableHorariosComponent,
   ],
   imports: [
     CommonModule,

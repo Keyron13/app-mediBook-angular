@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { HorarioService } from '../../services/horario.service';
+import { Observable, map } from 'rxjs';
+import { MedicoService } from '../../services/medico.service';
+import { EventEmitterService } from '../../services/eventEmitter.service';
 
 @Component({
   selector: 'app-horarios',
@@ -9,8 +13,24 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./horarios.component.scss']
 })
 export class HorariosComponent implements OnInit {
+  medicos!: Observable<any>;
+  horarios!:any;
+  horario_id:any=null;
   constructor(private readonly router: Router,
-    private formBuilder: FormBuilder,private notificacion:ToastrService,) {}
+    private formBuilder: FormBuilder,private notificacion:ToastrService,
+    private horarioService:HorarioService,private medicoService:MedicoService,private eventEmitter:EventEmitterService) {
+      this.medicos=this.medicoService.obtenerTodos().pipe(map(res=>res.medicos))
+      this.getHorarios()
+      this.eventEmitter.getEvent().subscribe((data) => {
+        if (data.event === 'DELETE_HORARIO') {
+          this.getHorarios();
+        }
+        if (data.event === 'EDIT_HORARIO') {
+          this.horario_id = data.id;
+          this.findHorarioFillForm(data.id);
+        }
+      });
+    }
     ngOnInit(): void {
       this.buildForm();
     }
@@ -19,8 +39,8 @@ buildForm() {
   this.FormLogin = this.formBuilder.group({
     medicos: ['', [Validators.required]],
     dias: ['', [Validators.required]],
-    horaI: ['', [Validators.required,this.validateTime]],
-    horaF: ['', [Validators.required,this.validateTime]],
+    horaI: ['', [Validators.required]],
+    horaF: ['', [Validators.required]],
   });
 }
 validateTime(control: any) {
@@ -51,10 +71,65 @@ Horario() {
 
   if (horaInicio > horaSalida) {
     // Realiza acciones si la hora de inicio es mayor que la hora de salida
+    this.notificacion.warning('La hora de inicio es mayor que la hora de salida','Advertencia!')
     return;
   }
+  if(this.horario_id!=null){
+    const body={
+      "hora_inicio":this.FormLogin.get('horaI')?.value,
+      "hora_fin":this.FormLogin.get('horaF')?.value,
+    }
+    return this.editHorario(body)
+  }
+  const body={
+    "dia":this.FormLogin.get('dias')?.value,
+    "hora_inicio":this.FormLogin.get('horaI')?.value,
+    "hora_fin":this.FormLogin.get('horaF')?.value,
+    "medico_id":this.FormLogin.get('medicos')?.value,
+  }
+  console.log(body)
+  this.horarioService.create(body).subscribe((data)=>{
+    this.notificacion.success('Horario asignado','Proceso exitoso');
+    this.FormLogin.reset();
+    this.getHorarios();
+
+  })
 
   // Realiza acciones si todas las validaciones son exitosas
 
 }
+getHorarios() {
+  this.horarioService.obtenerTodos().subscribe((data) => {
+    console.log(data);
+    this.horarios = data.Horario;
+  });
+}
+editHorario(body:any){
+  this.horarioService.update(body,this.horario_id).subscribe(data=>{
+    this.notificacion.success('Titulo actualizado','Proceso exitoso');
+    this.getHorarios();
+    this.FormLogin.reset();
+    this.FormLogin.get('dias')?.enable();
+    this.FormLogin.get('medicos')?.enable();
+
+    this.horario_id=null;
+  })
+}
+findHorarioFillForm(id: any) {
+  this.horarioService.obtenerUno(id).subscribe((data) => {
+    console.log(data.Horario);
+     this.FormLogin.setValue({
+      medicos:data.Horario.medico_id,
+      dias:data.Horario.dia,
+      horaI:data.Horario.hora_inicio,
+      horaF:data.Horario.hora_fin
+    });
+    this.FormLogin.get('dias')?.disable();
+    this.FormLogin.get('medicos')?.disable();
+  });
+
+}
+
+
+
 }

@@ -13,6 +13,8 @@ export class MedicosComponent {
       if(data.user.rol_id!==1){
         this.router.navigate(['home']);
       }
+    },()=>{
+      this.router.navigate(['home']);
     });
 }
 }

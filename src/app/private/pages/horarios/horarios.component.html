@@ -5,11 +5,10 @@
         <form [formGroup]="FormLogin" (ngSubmit)="Horario()">
             <div class="input-group">
                 <label for="diaSemana">Medico:</label>
-                <select id="diaSemana" name="diaSemana" formControlName="medicos" required>
-                 <option value="Seleccione" selected ></option>
-                 <option value="Medico">Medico 1</option>
-                 <option value="Medico">Medico 2</option>
-                 <option value="Medico">Medico 3</option>
+                <select *ngIf="medicos|async as medicos" id="diaSemana" name="diaSemana" formControlName="medicos" required>
+                  <option *ngFor="let medico of medicos" [value]="medico.id">
+                    {{ medico.usuario.nombre + " " + medico.usuario.apellido | titlecase }} - <b>{{medico.usuario.datos_personale.ci}}</b>
+                  </option>
                 </select>
                 <div
                 *ngIf="FormLogin.get('medicos')?.invalid && FormLogin.get('medicos')?.touched">
@@ -56,8 +55,9 @@
                 </div>
 
 
-          <button class="button" type="submit" [disabled]="FormLogin.invalid">Enviar</button>
+          <button class="button" type="submit" [disabled]="FormLogin.invalid">{{horario_id==null?'Enviar':'Editar'}}</button>
         </form>
       </div>
 
 </body>
+<app-table-horarios [horarios]="horarios"/>

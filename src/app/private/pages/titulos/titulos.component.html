@@ -1,1 +1,45 @@
-<p>titulos works!</p>
+
+<body>
+  <div class="container">
+      <h2>Titulo</h2>
+      <form [formGroup]="FormTitulo" (ngSubmit)="Horario()">
+
+
+        <div class="input-group">
+          <label for="hora">Nombre:</label>
+          <input type="text" id="hora" name="nombre" formControlName="nombre">
+        </div>
+        <div
+                *ngIf="FormTitulo.get('nombre')?.invalid && FormTitulo.get('nombre')?.touched">
+                <span *ngIf="FormTitulo.get('nombre')?.hasError('required')"
+                 style="color: red;"> El Nombre es Requerido.</span>
+                </div>
+
+        <div class="input-group">
+          <label for="date">Fecha:</label>
+          <input type="date" id="fecha" name="fecha"  formControlName="fecha">
+        </div>
+        <div
+                *ngIf="FormTitulo.get('fecha')?.invalid && FormTitulo.get('fecha')?.touched">
+                <span *ngIf="FormTitulo.get('fecha')?.hasError('required')"
+                 style="color: red;"> La Fecha es Requerido.</span>
+                </div>
+        <div class="input-group">
+          <label for="diaSemana">Medicos:</label>
+          <select id="diaSemana" name="diaSemana" formControlName="medicos" required>
+           <option value="Seleccione" selected ></option>
+            <option value="Medico">Medico 1</option>
+            <option value="Medico">Medico 2</option>
+            <option value="Medico">Medico 3</option>
+          </select>
+        </div>
+        <div
+        *ngIf="FormTitulo.get('medicos')?.invalid && FormTitulo.get('medicos')?.touched">
+        <span *ngIf="FormTitulo.get('medicos')?.hasError('required')"
+         style="color: red;">El Medico es Requerido.</span>
+        </div>
+        <button class="button" type="submit">Enviar</button>
+      </form>
+    </div>
+
+</body>

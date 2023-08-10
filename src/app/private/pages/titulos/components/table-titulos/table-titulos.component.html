@@ -1,0 +1,56 @@
+
+
+<div class="table-container">
+  <table>
+      <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Cédula</th>
+          <th>Cantón</th>
+          <th>Provincia</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Nombre titulo</th>
+          <th>Fecha</th>
+          <th>Acciones</th>
+      </tr>
+      <tbody *ngIf="titulos">
+      <tr *ngFor="let titulo of titulos">
+          <td>
+            {{titulo.medico.usuario.nombre|titlecase}}
+          </td>
+          <td>
+            {{titulo.medico.usuario.apellido|titlecase}}
+          </td>
+          <td>
+            {{titulo.medico.usuario.datos_personale.ci|titlecase}}
+          </td>
+          <td>
+            {{titulo.medico.usuario.ubicacion.canton|titlecase}}
+          </td>
+          <td>
+            {{titulo.medico.usuario.ubicacion.provincia|titlecase}}
+          </td>
+          <td>
+            {{titulo.medico.usuario.datos_personale.telefono}}
+          </td>
+          <td>
+            {{titulo.medico.usuario.email}}
+          </td>
+          <td>
+            {{titulo.nombre|titlecase}}
+          </td>
+          <td>
+            {{titulo.fecha|date}}
+          </td>
+          <td>
+            <button (click)="edit(titulo.id)">Editar</button>
+            <button (click)="delete(titulo.id)">Eliminar</button>
+          </td>
+
+      </tr>
+    </tbody>
+
+      <!-- Agrega más filas según sea necesario -->
+  </table>
+</div>

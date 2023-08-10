@@ -1,0 +1,59 @@
+
+
+<div class="table-container">
+  <table>
+      <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Cédula</th>
+          <th>Cantón</th>
+          <th>Provincia</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Dia</th>
+          <th>Hora inicio</th>
+          <th>Hora fin</th>
+      </tr>
+      <tbody *ngIf="horarios">
+      <tr *ngFor="let horario of horarios">
+        <td>
+          {{horario.medico.usuario.nombre|titlecase}}
+        </td>
+        <td>
+          {{horario.medico.usuario.apellido|titlecase}}
+        </td>
+        <td>
+          {{horario.medico.usuario.datos_personale.ci|titlecase}}
+        </td>
+        <td>
+          {{horario.medico.usuario.ubicacion.canton|titlecase}}
+        </td>
+        <td>
+          {{horario.medico.usuario.ubicacion.provincia|titlecase}}
+        </td>
+        <td>
+          {{horario.medico.usuario.datos_personale.telefono}}
+        </td>
+        <td>
+          {{horario.medico.usuario.email}}
+        </td>
+        <td>
+          {{horario.dia}}
+        </td>
+        <td>
+          {{horario.hora_inicio}}
+        </td>
+        <td>
+          {{horario.hora_fin}}
+        </td>
+          <td>
+            <button (click)="edit(horario.id)">Editar</button>
+            <button (click)="delete(horario.id)">Eliminar</button>
+          </td>
+
+      </tr>
+    </tbody>
+
+      <!-- Agrega más filas según sea necesario -->
+  </table>
+</div>

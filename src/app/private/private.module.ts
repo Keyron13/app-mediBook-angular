@@ -16,7 +16,7 @@ import { RecetasComponent } from './pages/recetas/recetas.component';
 import { ObservacionesComponent } from './pages/observaciones/observaciones.component';
 import { ReseniasComponent } from './pages/resenias/resenias.component';
 import { PrivateComponent } from './private.component';
-
+import { NavbarComponent } from '../core/shared/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { PrivateComponent } from './private.component';
     RecetasComponent,
     ObservacionesComponent,
     ReseniasComponent,
-    PrivateComponent
+    PrivateComponent,
+    NavbarComponent
   ],
   imports: [
     CommonModule,

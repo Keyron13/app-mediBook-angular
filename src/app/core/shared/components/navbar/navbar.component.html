@@ -1,1 +1,85 @@
-<p>navbar works!</p>
+<div class="nav">
+  <button class="boton1 logo" [routerLink]="['/home']">
+    <img
+      class="img-logo"
+      src="https://res.cloudinary.com/duhm7ousd/image/upload/v1691509233/Imagenes-MediBook/LogotipoVertical-800ppp_c4vasx.png"
+      alt=""/>
+    <h1 class="texto-none">MediBook</h1>
+  </button>
+
+  <div class="componente">
+    <button class="boton"
+    [routerLink]="['/home']">
+      <i class="input-icon uil uil-home-alt"></i>
+      <h2 class="texto-none-todo">Inicio</h2>
+    </button>
+
+    <button class="boton">
+        <i class="input-icon uil uil-user"></i>
+      <h2 class="texto-none-todo">Medicos</h2>
+    </button>
+    <div>
+        <button class="boton">
+          <i class="input-icon uil uil-edit"></i>
+          <h2 class="texto-none-todo">Especialidad</h2>
+        </button>
+      </div>
+      <div>
+        <button class="boton">
+          <i class="input-icon uil uil-file-alt"></i>
+          <h2 class="texto-none-todo">Titulo</h2>
+        </button>
+      </div>
+    <div>
+      <button
+        class="boton crear-iphone">
+        <i class="input-icon uil uil-file-check-alt"></i>
+        <h2 class="texto-none-todo">Citas</h2>
+      </button>
+    </div>
+
+    <div>
+      <button class="boton" [routerLink]="['/horarios']"
+      routerLinkActive="router-link-active">
+        <i class="input-icon uil uil-clock-three"></i>
+        <h2 class="texto-none-todo">Horarios</h2>
+      </button>
+    </div>
+
+    <div>
+        <button class="boton">
+          <i class="input-icon uil uil-eye"></i>
+          <h2 class="texto-none-todo">Observaciones</h2>
+        </button>
+      </div>
+
+      <div>
+        <button class="boton">
+          <i class="input-icon uil uil-usd-square"></i>
+          <h2 class="texto-none-todo">Pago</h2>
+        </button>
+      </div>
+      <div>
+        <button class="boton">
+          <i class="input-icon uil uil-book"></i>
+          <h2 class="texto-none-todo">Receta</h2>
+        </button>
+      </div>
+      <div>
+        <button class="boton">
+          <i class="input-icon uil uil-file-blank"></i>
+          <h2 class="texto-none-todo">Reseñas</h2>
+        </button>
+      </div>
+
+    <button class="boton abrir" style="margin: 0%">
+      <i class="input-icon uil uil-arrow-to-right"></i>
+      <h2 class="texto-none-todo">Salir</h2>
+    </button>
+  </div>
+
+  <button class="boton cerrar" style="margin: 0%">
+    <i class="input-icon uil uil-arrow-to-right"></i>
+    <h2 class="texto-none-todo">Salir</h2>
+  </button>
+</div>

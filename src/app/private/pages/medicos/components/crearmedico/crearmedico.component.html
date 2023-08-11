@@ -79,9 +79,9 @@
     <div class="row">
       <div class="col">
         <label for="Provincia">Provincia:</label>
-        <select id="Provincia" name="Provincia" formControlName="provincia" (change)="onProvinciaSelected()">
-          <option [value]="null" disabled>Seleccione una provincia</option>
-        <option *ngFor="let provincia of provincias" [value]="provincia">{{ provincia.label }}</option>
+        <select id="Provincia" name="Provincia" formControlName="provincia" [(ngModel)]="selectedProvincia"
+         (change)="onProvinciaSelected(selectedProvincia)">
+          <option *ngFor="let item of provincias" [value]="item.id">{{ item.label }}</option>
         </select>
         <div
         *ngIf="FormMedico.get('provincia')?.invalid && FormMedico.get('provincia')?.touched">
@@ -91,9 +91,9 @@
       </div>
         <div class="col">
         <label for="canton">Cantón:</label>
-        <select id="canton" name="canton" formControlName="canton">
-          <option [value]="" disabled>Seleccione un cantón</option>
-  <option *ngFor="let canton of filteredCantones" [value]="canton">{{ canton.label }}</option>
+        <select id="canton" name="canton" formControlName="canton" [(ngModel)]="selectedCanton"
+        (change)="onCantonesSelected(selectedCanton)">
+        <option *ngFor="let item of cantones" [value]="item.id">{{ item.label }}</option>
         </select>
         <div
         *ngIf="FormMedico.get('canton')?.invalid && FormMedico.get('canton')?.touched">

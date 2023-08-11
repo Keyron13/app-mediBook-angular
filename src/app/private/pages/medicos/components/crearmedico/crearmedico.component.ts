@@ -65,7 +65,7 @@ provincias = [
       { id: 12, label: 'San Fernando' },
       { id: 13, label: 'Santa Isabel' },
       { id: 14, label: 'Sevilla de Oro' },
-      { id: 15, label: 'Sigsig' },
+      { id: 15, label: 'Sígsig' },
     ],
   },
   {
@@ -79,7 +79,6 @@ provincias = [
       { id: 5, label: 'Guaranda' },
       { id: 6, label: 'Las Naves' },
       { id: 7, label: 'San Miguel' },
-      { id: 8, label: 'Simón Bolívar' },
     ],
   },
   {
@@ -176,7 +175,6 @@ provincias = [
       { id: 1, label: 'Isabela' },
       { id: 2, label: 'San Cristóbal' },
       { id: 3, label: 'Santa Cruz' },
-      { id: 4, label: 'Floreana' },
     ],
   },
   {
@@ -189,7 +187,7 @@ provincias = [
       { id: 4, label: 'Balzar' },
       { id: 5, label: 'Colimes' },
       { id: 6, label: 'Daule' },
-      { id: 7, label: 'Duran' },
+      { id: 7, label: 'Durán' },
       { id: 8, label: 'El Empalme' },
       { id: 9, label: 'El Triunfo' },
       { id: 10, label: 'General Antonio Elizalde (Bucay)' },
@@ -202,15 +200,12 @@ provincias = [
       { id: 17, label: 'Nobol' },
       { id: 18, label: 'Palestina' },
       { id: 19, label: 'Pedro Carbo' },
-      { id: 20, label: 'Playas' },
+      { id: 20, label: 'Coronel Marcelino Maridueña' },
       { id: 21, label: 'Salitre (El Salitre)' },
       { id: 22, label: 'Samborondón' },
-      { id: 23, label: 'Santa Elena' },
-      { id: 24, label: 'Santa Lucía' },
-      { id: 25, label: 'Simón Bolívar' },
-      { id: 26, label: 'Yaguachi' },
-      { id: 27, label: 'General Antonio Elizalde (Bucay)' },
-      { id: 28, label: 'Isidro Ayora' },
+      { id: 23, label: 'Santa Lucía' },
+      { id: 24, label: 'Simón Bolívar' },
+      { id: 25, label: 'Yaguachi' },
     ],
   },
   {
@@ -243,6 +238,8 @@ provincias = [
       { id: 12, label: 'Saraguro' },
       { id: 13, label: 'Sozoranga' },
       { id: 14, label: 'Zapotillo' },
+      { id: 15, label: 'Olmedo' },
+      { id: 16, label: 'Pindal' },
     ],
   },
   {
@@ -262,7 +259,6 @@ provincias = [
       { id: 11, label: 'Valencia' },
       { id: 12, label: 'Ventanas' },
       { id: 13, label: 'Vínces' },
-      { id: 14, label: 'Vivas' },
     ],
   },
   {
@@ -289,6 +285,8 @@ provincias = [
       { id: 18, label: 'Santa Ana' },
       { id: 19, label: 'Sucre' },
       { id: 20, label: 'Tosagua' },
+      { id: 21, label: 'Pichincha' },
+      { id: 22, label: 'Veinticuatro de mayo' },
     ],
   },
   {
@@ -303,7 +301,7 @@ provincias = [
       { id: 6, label: 'Pablo Sexto' },
       { id: 7, label: 'Palora' },
       { id: 8, label: 'San Juan Bosco' },
-      { id: 9, label: 'Santiago' },
+      { id: 9, label: 'Santiago de Méndez' },
       { id: 10, label: 'Sucúa' },
       { id: 11, label: 'Taisha' },
       { id: 12, label: 'Tiwintza' },
@@ -318,15 +316,14 @@ provincias = [
       { id: 3, label: 'Carlos Julio Arosemena Tola' },
       { id: 4, label: 'El Chaco' },
       { id: 5, label: 'Quijos' },
-      { id: 6, label: 'Quijos' },
-      { id: 7, label: 'Tena' },
+      { id: 6, label: 'Tena' },
     ],
   },
   {
     id: 17,
     label: 'Orellana',
     cantones: [
-      { id: 1, label: 'Orellana' },
+      { id: 1, label: 'Francisco de Orellana' },
       { id: 2, label: 'Aguarico' },
       { id: 3, label: 'La Joya de los Sachas' },
       { id: 4, label: 'Loreto' },
@@ -354,7 +351,6 @@ provincias = [
       { id: 6, label: 'San Miguel de los Bancos' },
       { id: 7, label: 'Pedro Vicente Maldonado' },
       { id: 8, label: 'Puerto Quito' },
-      { id: 9, label: 'Santo Domingo' },
     ],
   },
   {
@@ -397,11 +393,9 @@ provincias = [
       { id: 4, label: 'Mocha' },
       { id: 5, label: 'Patate' },
       { id: 6, label: 'Pelileo' },
-      { id: 7, label: 'Pillaro' },
+      { id: 7, label: 'Píllaro' },
       { id: 8, label: 'Quero' },
-      { id: 9, label: 'San Pedro de Pelileo' },
-      { id: 10, label: 'Santiago de Pillaro' },
-      { id: 11, label: 'Tisaleo' },
+      { id: 9, label: 'Tisaleo' },
     ],
   },
   {
@@ -420,43 +414,28 @@ provincias = [
     ],
   },
 ];
-
-//Selecionar Provincias
-provinciaHolder: string = '';
-selectedOption = false;
-selectedOptionCanton: any;
-onOptionSelected() {
-  this.selectedOption = true;
-}
-onClearSelection(): void {
-  this.selectedProvincia = null;
-  this.provinciaHolder = 'provincias';
-  this.selectedCanton = null;
-  this.cantonHolder = 'cantones';
-}
-
-onOptionSelectedCanton() {
-  this.selectedOptionCanton = 'false';
-  this.cantonHolder = '';
-}
-cantonHolder: string = '';
-onClearSelectedCanton(): void {
-  this.selectedCanton = null; // Restablecer la selección a null o a otro valor por defecto
-  this.cantonHolder = 'cantones'; // Restablecer el valor del placeholder
-}
-//selcionar provincias y para cada canton
-selectedCanton: any;
 selectedProvincia: any;
-filteredCantones: any[] = [];
-disableProvincias = false;
+  selectedCanton: any;
+  cantones:any;
+  provincia:any;
+  onProvinciaSelected(data:string) {
+    this.selectedCanton = [];
 
-onProvinciaSelected() {
-  if (this.selectedProvincia) {
-    this.filteredCantones = this.selectedProvincia.cantones;
-  } else {
-    this.filteredCantones = [];
+     console.log(data);
+
+     this.provincia = this.provincias.find(p => p.id === parseInt(data, 10));
+
+     console.log(this.provincia.cantones);
+     this.cantones = this.provincia.cantones;
+
   }
-}
+  onCantonesSelected(data:string) {
+
+    console.log(data);
+
+
+ }
+
 }
 
 

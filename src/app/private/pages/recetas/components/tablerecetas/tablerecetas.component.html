@@ -59,7 +59,7 @@
           {{receta.cita.titulo|titlecase}}
         </td>
       </ng-container>
-      <ng-container *ngIf="receta.cita_observacion.receta" >
+      <ng-container *ngIf="receta.cita_observacion?.receta" >
         <td>
           {{ receta.paciente.usuario.datos_personale.ci  }}
         </td>

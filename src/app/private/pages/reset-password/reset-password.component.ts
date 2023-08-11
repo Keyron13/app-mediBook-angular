@@ -4,14 +4,13 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/public/services/auth.service';
 import { UserService } from '../../services/user.service';
-import { Observable, map } from 'rxjs';
 import { ResetpasswordService } from '../../services/resetpassword.service';
 import { EventEmitterService } from '../../services/eventEmitter.service';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.scss']
+  styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent {
   FormResetPassword!: FormGroup;

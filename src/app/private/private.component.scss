@@ -1,0 +1,21 @@
+.contenedor{
+  width: 83%;
+  background-color: aqua;
+  float: right;
+}
+
+@media (max-width: 1289px) {
+
+  .contenedor{
+    width: 90%;
+  }
+}
+
+.navbar{
+  width: 17%;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  right: -10;
+}
+

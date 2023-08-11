@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tableresenias',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./tableresenias.component.scss']
 })
 export class TablereseniasComponent {
-
+  term!:string
+  @Input() resenias!:any
 }

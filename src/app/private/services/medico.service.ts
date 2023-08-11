@@ -26,4 +26,8 @@ export class MedicoService {
   delete(id:any):Observable<any>{
     return this.http.delete<any>(`${this.api}medicos/${id}`);
   }
+  allMedico():Observable<any>{
+    return this.http.get<any>(`${this.api}medico-information`);
+
+  }
 }

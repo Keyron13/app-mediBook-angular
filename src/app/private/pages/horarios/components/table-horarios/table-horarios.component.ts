@@ -12,6 +12,7 @@ export class TableHorariosComponent {
   term!:string
 
   @Input() horarios:any;
+  @Input() user:any;
   constructor(private horarioService:HorarioService,private toastService:ToastrService,private eventEmitter:EventEmitterService){
   }
   delete(id:any){

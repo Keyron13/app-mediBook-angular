@@ -1,1 +1,56 @@
-<p>tablepagos works!</p>
+<div class="table-container">
+  <div class="input-group" style="width: 50%; margin: 0 auto">
+    <label for="date">Buscar:</label>
+    <input type="text" [(ngModel)]="term" />
+  </div>
+  <table>
+    <tr>
+      <th>CI Paciente</th>
+      <th>Nombres Paciente</th>
+      <th>Telefono Paciente</th>
+      <th>CI Medico</th>
+      <th>Nombres Medico</th>
+      <th>Telefono Medico</th>
+      <th>Especialidad</th>
+      <th>Fecha</th>
+      <th>Cantidad</th>
+      <th>Cita</th>
+    </tr>
+    <tbody *ngIf="pagos">
+      <tr *ngFor="let pago of pagos | filter : term">
+        <td>
+          {{ pago.paciente.usuario.datos_personale.ci  }}
+        </td>
+        <td>
+          {{ pago.paciente.usuario.nombre | titlecase }}
+          {{ pago.paciente.usuario.apellido | titlecase }}
+        </td>
+        <td>
+          {{ pago.paciente.usuario.datos_personale.telefono | titlecase }}
+        </td>
+       <td> {{ pago.medico.usuario.datos_personale.ci  }}</td>
+
+        <td>
+          {{ pago.medico.usuario.nombre | titlecase }}
+          {{ pago.medico.usuario.apellido | titlecase }}
+        </td>
+        <td>
+          {{ pago.medico.usuario.datos_personale.telefono | titlecase }}
+        </td>
+        <td>
+          {{ pago.medico.especialidad.nombre | titlecase }}
+        </td>
+        <td>
+          {{ pago.cita.fecha | date }}
+        </td>
+        <td>
+          {{pago.cantidad|currency}}
+        </td>
+        <td>
+          {{pago.cita.titulo|titlecase}}
+        </td>
+      </tr>
+    </tbody>
+    <!-- Agrega más filas según sea necesario -->
+  </table>
+</div>

@@ -27,6 +27,8 @@ import { TablerecetasComponent } from './pages/recetas/components/tablerecetas/t
 import { TablereseniasComponent } from './pages/resenias/components/tableresenias/tableresenias.component';
 import { TableusersComponent } from './pages/reset-password/components/tableusers/tableusers.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { CrearmedicoComponent } from './pages/medicos/components/crearmedico/crearmedico.component';
+import { ActualizarmedicoComponent } from './pages/medicos/components/actualizarmedico/actualizarmedico.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -50,7 +52,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     TablepagosComponent,
     TablerecetasComponent,
     TablereseniasComponent,
-    TableusersComponent
+    TableusersComponent,
+    CrearmedicoComponent,
+    ActualizarmedicoComponent
   ],
   imports: [
     CommonModule,

@@ -17,9 +17,6 @@ export class LoginComponent implements OnInit {
     this.buildForm();
     const loginButton = document.querySelector('#login-button') as HTMLElement;
     const container = document.querySelector('#container') as HTMLElement;
-    const closeButton = document.querySelector('.close-btn') as HTMLElement;
-    const forgottenButton = document.querySelector('#forgotten') as HTMLElement;
-    const forgottenContainer = document.querySelector('#forgotten-container') as HTMLElement;
 
     loginButton.addEventListener('click', () => {
       TweenMax.from('#login-button', 0.4, { opacity: 1, ease: Sine.easeInOut });
@@ -28,20 +25,6 @@ export class LoginComponent implements OnInit {
         TweenMax.from('#container', 0.4, { scale: 0, ease: Sine.easeInOut });
         TweenMax.to('#container', 0.4, { scale: 1, ease: Sine.easeInOut });
       }});
-    });
-
-    closeButton.addEventListener('click', () => {
-      TweenMax.from('#container', 0.4, { scale: 1, ease: Sine.easeInOut });
-      TweenMax.to('#container', 0.4, { left: '0px', scale: 0, ease: Sine.easeInOut, onComplete: () => {
-        container.style.display = 'none';
-        forgottenContainer.style.display = 'none';
-        loginButton.style.display = 'block';
-      }});
-    });
-
-    forgottenButton.addEventListener('click', () => {
-      container.style.display = 'none';
-      forgottenContainer.style.display = 'block';
     });
 
   }

@@ -18,7 +18,7 @@ export class MedicoService {
     return this.http.get<any>(`${this.api}medicos/${id}`);
   }
   create(body:any):Observable<any>{
-    return this.http.post<any>(`${this.api}medicos`,body);
+    return this.http.post<any>(`${this.api}register-medico`,body);
   }
   update(body:any,id:any):Observable<any>{
     return this.http.put<any>(`${this.api}medicos/${id}`,body);

@@ -1,8 +1,12 @@
-import { compileNgModule } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable, map } from 'rxjs';
+import { EspecialidadService } from 'src/app/private/services/especialidad.service';
+import { EventEmitterService } from 'src/app/private/services/eventEmitter.service';
+import { MedicoService } from 'src/app/private/services/medico.service';
 
 @Component({
   selector: 'app-crearmedico',
@@ -10,25 +14,40 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./crearmedico.component.scss']
 })
 export class CrearmedicoComponent implements OnInit{
-
   constructor(
     private readonly router: Router,
     private formBuilder: FormBuilder,
     private notificacion: ToastrService,
+    private medico: MedicoService,
+    private readonly eventEmitterService: EventEmitterService,
+    private es:EspecialidadService,
 
-  ) {}
+  ) {
+    this.especialidad = this.es.obtenerTodos().pipe(map((data) => data.especialidades));
+    this.eventEmitterService.getEvent().subscribe(data=>{
+      if(data.event=='DELETE_MEDICO'){
+        this.getMedico();
+      }
+      if(data.event=='EDIT_MEDICO'){
+        this.findMedicoFillForm(data.id);
+        this.getMedico();
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.buildForm();
+    this.getMedico();
   }
   FormMedico!: FormGroup;
   buildForm() {
     this.FormMedico = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
-      cedula: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10)]],
+      ci: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10)]],
       telefono: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10)]],
       fecha: ['', [Validators.required]],
+      especialidad_id: ['', [Validators.required]],
       provincia: ['', [Validators.required]],
       canton: ['', [Validators.required]],
       email: ['', [Validators.required,Validators.email]],
@@ -36,15 +55,65 @@ export class CrearmedicoComponent implements OnInit{
     });
   }
 
-  Crear(){
+  Crear(value:any){
     if (this.FormMedico.invalid) {
       this.notificacion.error('Formulario invalido', 'Proceso erroneo');
       // Realiza acciones si el formulario es inválido
       return;
     } else {
+      this.medico.create(value).subscribe((data)=>{
+        this.notificacion.success('El medico fue creado con exito','Proceso exitoso')
+        this.FormMedico.reset();
+        this.getMedico();
+      })
+    }
   }
+  medicos!:any;
+  especialidad!: Observable<any>;
+getMedico() {
+  this.medico.obtenerTodos().subscribe((data) => {
+    console.log(data);
+    this.medicos = data.medicos;
+  });
 }
+findMedicoFillForm(id: any) {
+  this.medico.obtenerUno(id).subscribe((data) => {
+    console.log(data.medicos);
+    this.FormMedico.setValue({
+      nombre: data.medicos.usuario.nombre,
+      apellido: data.medicos.usuario.apellido,
+      fecha: data.medicos.usuario.datos_personale.fecha,
+      cedula: data.medicos.usuario.datos_personale.ci,
+      telefono: data.medicos.usuario.datos_personale.telefono,
+      provincia: data.medicos.usuario.ubicacion.provincia,
+      canton: data.medicos.usuario.ubicacion.canton,
+      email: data.medicos.usuario.email,
+      password: data.medicos.usuario.password,
+      especialidad_id: data.medicos.especialidad.nombre,
+    });
+  this.FormMedico.get('email')?.disable();
+  this.FormMedico.get('password')?.disable();
+  this.FormMedico.get('cedula')?.disable();
+  this.FormMedico.get('telefono')?.disable();
 
+  });
+
+}
+medico_id: any=null;
+especialdad_id:any=null;
+editMedico(body:any){
+  this.medico.update(body,this.medico_id).subscribe(data=>{
+    this.notificacion.success('Medico actualizado','Proceso exitoso');
+    this.getMedico();
+    this.FormMedico.reset();
+    this.medico_id=null;
+    this.FormMedico.get('email')?.enable();
+    this.FormMedico.get('password')?.enable();
+    this.FormMedico.get('cedula')?.enable();
+    this.FormMedico.get('telefono')?.enable();
+
+  })
+}
 
 provincias = [
   {

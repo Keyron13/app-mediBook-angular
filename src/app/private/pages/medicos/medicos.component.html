@@ -3,34 +3,41 @@
 </div>
 
 <div class="table-container">
+  <div class="input-group" style="width: 50%;margin: 0 auto;">
+    <label for="date">Buscar:</label>
+    <input type="text" [(ngModel)]="term" />
+  </div>
   <table>
       <tr>
           <th>Id</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Cédula</th>
-          <th>Cantón</th>
           <th>Provincia</th>
+          <th>Cantón</th>
           <th>Teléfono</th>
+          <th>Especialidad</th>
           <th>Correo</th>
           <th>Acciones</th>
       </tr>
-      <tr>
-          <td>1</td>
-          <td>John</td>
-          <td>Doe</td>
-          <td>123456789</td>
-          <td>San José</td>
-          <td>San José</td>
-          <td>123-456-7890</td>
-          <td>john@example.com</td>
-          <td><button class="update"><i class="input-icon uil uil-edit"></i></button>
-            <button class="delete"><i class="input-icon uil uil-trash-alt"></i></button></td>
-
-      </tr>
+        <tbody *ngIf="medicos">
+          <tr *ngFor="let medico of medicos|filter:term">
+          <td>{{medico.usuario.id}}</td>
+          <td>{{medico.usuario.nombre}}</td>
+          <td>{{medico.usuario.apellido}}</td>
+          <td>{{medico.usuario.datos_personale.ci}}</td>
+          <td>{{medico.usuario.ubicacion.provincia}}</td>
+          <td>{{medico.usuario.ubicacion.canton}}</td>
+          <td>{{medico.usuario.datos_personale.telefono}}</td>
+          <td>{{medico.especialidad.nombre}}</td>
+          <td>{{medico.usuario.email}}</td>
+          <td><button class="update" (click)="edit(medico.id)"><i class="input-icon uil uil-edit"></i></button>
+            <button class="delete" (click)="delete(medico.id)"><i class="input-icon uil uil-trash-alt"></i></button></td>
+          </tr>
+      </tbody>
       <!-- Agrega más filas según sea necesario -->
   </table>
 </div>
 
 <app-crearmedico></app-crearmedico>
-<app-actualizarmedico></app-actualizarmedico>
+

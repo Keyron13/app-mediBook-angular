@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="form" [formGroup]="FormMedico" (ngSubmit)="Crear()">
+  <form class="form" [formGroup]="FormMedico" (ngSubmit)="Crear(FormMedico.value)">
     <div class="row">
       <div class="col">
         <label for="nombre">Nombre:</label>
@@ -38,20 +38,20 @@
       </div>
       <div class="col">
         <label for="cedula">Cédula:</label>
-        <input type="text" id="cedula" name="cedula" formControlName="cedula">
+        <input type="text" id="cedula" name="cedula" formControlName="ci">
         <div
-        *ngIf="FormMedico.get('cedula')?.invalid && FormMedico.get('cedula')?.touched">
+        *ngIf="FormMedico.get('ci')?.invalid && FormMedico.get('ci')?.touched">
         <span
-          *ngIf="FormMedico.get('cedula')?.hasError('required')"
+          *ngIf="FormMedico.get('ci')?.hasError('required')"
           style="color: red">
           La Cedula es Requerido.</span>
       </div>
       <div
-      *ngIf="FormMedico.get('cedula')?.hasError('maxlength')" style="color: red;">
+      *ngIf="FormMedico.get('ci')?.hasError('maxlength')" style="color: red;">
       10 Caracteres como Máximo.
       </div>
       <div
-      *ngIf="FormMedico.get('cedula')?.hasError('pattern')" style="color: red;">
+      *ngIf="FormMedico.get('ci')?.hasError('pattern')" style="color: red;">
       La cedula debe contener solo números.
       </div>
       </div>
@@ -77,6 +77,17 @@
       </div>
     </div>
     <div class="row">
+       <div class="col">
+        <label for="especialidad">Especialidad:</label>
+        <select id="especialidad" name="especialidad" formControlName="especialidad_id" *ngIf="especialidad|async as especialidades">
+        <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">{{ especialidad.nombre }}</option>
+        </select>
+        <div
+        *ngIf="FormMedico.get('especialidad_id')?.invalid && FormMedico.get('especialidad_id')?.touched">
+        <span *ngIf="FormMedico.get('especialidad_id')?.hasError('required')"
+         style="color: red;"> El Especialidad es Requerido.</span>
+        </div>
+      </div>
       <div class="col">
         <label for="Provincia">Provincia:</label>
         <select id="Provincia" name="Provincia" formControlName="provincia" [(ngModel)]="selectedProvincia"
@@ -88,6 +99,7 @@
         <span *ngIf="FormMedico.get('provincia')?.hasError('required')"
          style="color: red;"> La Provincia es Requerido.</span>
         </div>
+
       </div>
         <div class="col">
         <label for="canton">Cantón:</label>
@@ -101,6 +113,7 @@
          style="color: red;"> El canton es Requerido.</span>
         </div>
       </div>
+
     </div>
     <div class="row">
       <div class="col">

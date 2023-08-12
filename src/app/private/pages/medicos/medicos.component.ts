@@ -26,7 +26,7 @@ export class MedicosComponent {
       this.router.navigate(['home']);
     });
     eventEmitter.getEvent().subscribe(even=>{
-      if(even.event=='DELETE_MEDICO'){
+      if(even.event=='DELETE_MEDICO'||even.event=='CREATE_MEDICO'){
         this.getMedico();
       }
     })

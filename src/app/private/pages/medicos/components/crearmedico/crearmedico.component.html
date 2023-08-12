@@ -145,6 +145,6 @@
       </div>
       </div>
     </div>
-    <button type="submit" [disabled]="FormMedico.invalid">Enviar</button>
+    <button type="submit" [disabled]="FormMedico.invalid"> {{medico_id==null?'Enviar':'Editar'}} </button>
   </form>
 </div>

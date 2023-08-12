@@ -2,11 +2,14 @@
   <button class="boton1 logo" [routerLink]="['/home']">
     <img
       class="img-logo"
-      src="https://res.cloudinary.com/duhm7ousd/image/upload/v1691509233/Imagenes-MediBook/LogotipoVertical-800ppp_c4vasx.png"
+      src="https://res.cloudinary.com/duhm7ousd/image/upload/v1691509232/Imagenes-MediBook/LogotipoHorizontal-800ppp_tjuokd.png"
       alt=""/>
-    <h1 class="texto-none">MediBook</h1>
+      <img
+      class="img-logo2"
+      src="https://res.cloudinary.com/duhm7ousd/image/upload/v1691509232/Imagenes-MediBook/Imagotipo-800ppp_h1biao.png"
+      alt=""/>
   </button>
-  <h5 *ngIf="user" >Hola {{user?.nombre+" "+user?.apellido|titlecase}} </h5>
+  <!-- <h5 *ngIf="user" >Hola {{user?.nombre+" "+user?.apellido|titlecase}} </h5> -->
   <div class="componente">
     <button class="boton"
     [routerLink]="['/home']">
@@ -18,21 +21,21 @@
         <i class="input-icon uil uil-user"></i>
       <h2 class="texto-none-todo">Medicos</h2>
     </button>
+
     <div *ngIf="user?.rol_id===1" >
-        <button class="boton" [routerLink]="['especialidad']">
-          <i class="input-icon uil uil-edit"></i>
-          <h2 class="texto-none-todo">Especialidad</h2>
-        </button>
-      </div>
-      <div *ngIf="user?.rol_id===1">
-        <button class="boton" [routerLink]="['/titulos']">
-          <i class="input-icon uil uil-file-alt"></i>
-          <h2 class="texto-none-todo">Titulo</h2>
-        </button>
-      </div>
+      <button class="boton" [routerLink]="['especialidad']">
+        <i class="input-icon uil uil-edit"></i>
+        <h2 class="texto-none-todo">Especialidad</h2>
+      </button>
+    </div>
+    <div *ngIf="user?.rol_id===1">
+      <button class="boton" [routerLink]="['/titulos']">
+        <i class="input-icon uil uil-file-alt"></i>
+        <h2 class="texto-none-todo">Titulo</h2>
+      </button>
+    </div>
     <div>
-      <button
-        class="boton crear-iphone" [routerLink]="['citas']"  >
+      <button class="boton crear-iphone" [routerLink]="['citas']"  >
         <i class="input-icon uil uil-file-check-alt"></i>
         <h2 class="texto-none-todo">Citas</h2>
       </button>
@@ -47,45 +50,45 @@
     </div>
 
     <div>
-        <button class="boton" [routerLink]="['observaciones']">
-          <i class="input-icon uil uil-eye"></i>
-          <h2 class="texto-none-todo">Observaciones</h2>
-        </button>
-      </div>
+      <button class="boton" [routerLink]="['observaciones']">
+        <i class="input-icon uil uil-eye"></i>
+        <h2 class="texto-none-todo">Observaciones</h2>
+      </button>
+    </div>
 
-      <div>
-        <button class="boton" [routerLink]="['pagos']">
-          <i class="input-icon uil uil-usd-square"></i>
-          <h2 class="texto-none-todo">Pago</h2>
-        </button>
-      </div>
-      <div>
-        <button class="boton" [routerLink]="['recetas']">
-          <i class="input-icon uil uil-book"></i>
-          <h2 class="texto-none-todo">Receta</h2>
-        </button>
-      </div>
-      <div>
-        <button class="boton" [routerLink]="['resenias']">
-          <i class="input-icon uil uil-file-blank"></i>
-          <h2 class="texto-none-todo">Reseñas</h2>
-        </button>
-      </div>
-      <div *ngIf="user?.rol_id===1">
-        <button class="boton" [routerLink]="['reset-password']"  >
-          <i class="input-icon uil uil-file-blank"></i>
-          <h2 class="texto-none-todo">Reset Password</h2>
-        </button>
-      </div>
+    <div>
+      <button class="boton" [routerLink]="['pagos']">
+        <i class="input-icon uil uil-usd-square"></i>
+        <h2 class="texto-none-todo">Pago</h2>
+      </button>
+    </div>
 
-    <button (click)="logout()"  class="boton abrir" style="margin: 0%">
-      <i class="input-icon uil uil-arrow-to-right"></i>
-      <h2 class="texto-none-todo">Salir</h2>
-    </button>
+    <div>
+      <button class="boton" [routerLink]="['recetas']">
+        <i class="input-icon uil uil-book"></i>
+        <h2 class="texto-none-todo">Receta</h2>
+      </button>
+    </div>
+
+    <div>
+      <button class="boton" [routerLink]="['resenias']">
+        <i class="input-icon uil uil-file-blank"></i>
+        <h2 class="texto-none-todo">Reseñas</h2>
+      </button>
+    </div>
+
+    <div *ngIf="user?.rol_id===1">
+      <button class="boton" [routerLink]="['reset-password']"  >
+        <i class="input-icon uil uil-keyhole-square"></i>
+        <h2 class="texto-none-todo">Reset Password</h2>
+      </button>
+    </div>
+
   </div>
 
-  <button (click)="logout()"  class="boton cerrar" style="margin: 0%">
-    <i class="input-icon uil uil-arrow-to-right"></i>
+  <button (click)="logout()"  class="boton cerrar" style="margin: 0%;">
+    <i class="input-icon uil uil-sign-out-alt"></i>
     <h2 class="texto-none-todo">Salir</h2>
   </button>
+
 </div>

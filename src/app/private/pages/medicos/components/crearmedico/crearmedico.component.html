@@ -1,4 +1,5 @@
-<div class="container">
+<h1 mat-dialog-title> Ingresar un nuevo Médico </h1>
+<div mat-dialog-content class="container">
   <form class="form" [formGroup]="FormMedico" (ngSubmit)="Crear(FormMedico.value)">
     <div class="row">
       <div class="col">
@@ -147,4 +148,7 @@
     </div>
     <button type="submit" [disabled]="FormMedico.invalid"> {{medico_id==null?'Enviar':'Editar'}} </button>
   </form>
+</div>
+<div  mat-dialog-actions align="end">
+  <button  mat-button  mat-dialog-close> Cerrar </button>
 </div>

@@ -6,6 +6,11 @@ import {  HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+
 //componentes
 
 @NgModule({
@@ -17,12 +22,16 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
     RouterModule,
     CommonModule,
     HttpClientModule,
+    MatProgressBarModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports:[
     RouterModule,
     HttpClientModule,
-    SpinnerComponent
-
+    SpinnerComponent,
+    MatDialogModule,
+    MatButtonModule,
   ],
   providers:[
 

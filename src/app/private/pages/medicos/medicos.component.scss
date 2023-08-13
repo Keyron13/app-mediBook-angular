@@ -12,10 +12,9 @@ body {
 .table-container {
   background-color: white;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(234, 185, 52, 0.254);
   padding: 20px;
-  margin-left: 5%;
-  margin-top: 10%;
+  margin: 40px;
 }
 
 table {
@@ -34,20 +33,7 @@ th {
   background-color: #f0f0f0;
   font-weight: bold;
 }
-.button button{
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-margin-left: 30%;
-}
 
-.button button:hover {
-  background-color: #0056b3;
-}
 .update {
   background-color: blue;
   border: none;
@@ -83,5 +69,81 @@ input,select {
   border-radius: 3px;
   font-size: 14px;
   margin-top: 5px;
+}
 
+
+
+
+.container-search {
+	position: absolute;
+	left: 57%;
+	top: 19.5%;
+	transform: translate(-50%,-50%);
+	padding: 10px;
+}
+
+input {
+	outline: none;
+	box-sizing: border-box;
+	height: 50px;
+	width: 0px;
+	padding: 0 20px;
+	color: #000;
+	border-radius: 50px;
+	font-size: 20px;
+	border: 1px solid #F39C12;
+	transition: all .7s ease;
+}
+
+::placeholder {
+	color: grey;
+}
+
+.btn-search {
+	position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	right: 7px;
+	top: 12px;
+	width: 55px;
+	height: 55px;
+	background: #F39C12;
+	line-height: 80px;
+	border-radius: 50%;
+	text-align: center;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.btn-search i {
+	font-size: 32px;
+	color: white;
+	transition: all .7s ease;
+}
+
+.container-search:hover input {
+	width: 350px;
+}
+
+.container-search:hover i{
+	transform: rotate(-360deg);
+}
+
+.btn-search:hover{
+	background: #F39C12;
+}
+
+
+.container-table{
+  margin-top: 90px;
+  margin-bottom: 20px;
+}
+
+
+
+.button{
+  display: flex;
+  justify-content: center;
+  margin: 40px;
 }

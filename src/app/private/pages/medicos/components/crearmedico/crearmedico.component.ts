@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -94,56 +94,54 @@ export class CrearmedicoComponent implements OnInit{
   }
   medicos!:any;
   especialidad!: Observable<any>;
-getMedico() {
-  this.medico.obtenerTodos().subscribe((data) => {
-    console.log(data);
-    this.medicos = data.medicos;
-  });
-}
-findMedicoFillForm(id: any) {
-  this.medico.obtenerUno(id).subscribe((data) => {
-    this.medico_id=id;
-    const medico=data.medico
-    console.log(medico)
-    this.FormMedico.setValue({
-      nombre: medico.usuario.nombre,
-      apellido:medico.usuario.apellido,
-      fecha: medico.usuario.datos_personale.fecha,
-      ci: medico.usuario.datos_personale.ci,
-      telefono: medico.usuario.datos_personale.telefono,
-      provincia: medico.usuario.ubicacion.provincia,
-      canton: medico.usuario.ubicacion.canton,
-      email: medico.usuario.email,
-      password: "*******",
-      especialidad_id: medico.especialidad.id,
+  getMedico() {
+    this.medico.obtenerTodos().subscribe((data) => {
+      console.log(data);
+      this.medicos = data.medicos;
     });
-  this.FormMedico.get('email')?.disable();
-  this.FormMedico.get('password')?.disable();
-  this.FormMedico.get('canton')?.disable();
-  this.FormMedico.get('provincia')?.disable();
-  this.FormMedico.get('ci')?.disable();
-  this.FormMedico.get('telefono')?.disable();
-
-  });
-
-}
-especialdad_id:any=null;
-editMedico(body:any){
-  this.medico.update(body,this.medico_id).subscribe(data=>{
-    this.notificacion.success('Medico actualizado','Proceso exitoso');
-    this.FormMedico.reset();
-    this.medico_id=null;
-    this.FormMedico.get('email')?.enable();
-    this.FormMedico.get('password')?.enable();
-    this.FormMedico.get('canton')?.enable();
-    this.FormMedico.get('provincia')?.enable();
-    this.FormMedico.get('ci')?.enable();
-    this.FormMedico.get('telefono')?.enable();
-    this.eventEmitterService.setEvent({
-      event:'CREATE_MEDICO'
+  }
+  findMedicoFillForm(id: any) {
+    this.medico.obtenerUno(id).subscribe((data) => {
+      this.medico_id=id;
+      const medico=data.medico
+      console.log(medico)
+      this.FormMedico.setValue({
+        nombre: medico.usuario.nombre,
+        apellido:medico.usuario.apellido,
+        fecha: medico.usuario.datos_personale.fecha,
+        ci: medico.usuario.datos_personale.ci,
+        telefono: medico.usuario.datos_personale.telefono,
+        provincia: medico.usuario.ubicacion.provincia,
+        canton: medico.usuario.ubicacion.canton,
+        email: medico.usuario.email,
+        password: "*******",
+        especialidad_id: medico.especialidad.id,
+      });
+      this.FormMedico.get('email')?.disable();
+      this.FormMedico.get('password')?.disable();
+      this.FormMedico.get('canton')?.disable();
+      this.FormMedico.get('provincia')?.disable();
+      this.FormMedico.get('ci')?.disable();
+      this.FormMedico.get('telefono')?.disable();
+    });
+  }
+  especialdad_id:any=null;
+  editMedico(body:any){
+    this.medico.update(body,this.medico_id).subscribe(data=>{
+      this.notificacion.success('Medico actualizado','Proceso exitoso');
+      this.FormMedico.reset();
+      this.medico_id=null;
+      this.FormMedico.get('email')?.enable();
+      this.FormMedico.get('password')?.enable();
+      this.FormMedico.get('canton')?.enable();
+      this.FormMedico.get('provincia')?.enable();
+      this.FormMedico.get('ci')?.enable();
+      this.FormMedico.get('telefono')?.enable();
+      this.eventEmitterService.setEvent({
+        event:'CREATE_MEDICO'
+      })
     })
-  })
-}
+  }
 
 provincias = [
   {
@@ -529,11 +527,8 @@ selectedProvincia: any;
 
   }
   onCantonesSelected(data:string) {
-
     console.log(data);
-
-
- }
+  }
 
 }
 

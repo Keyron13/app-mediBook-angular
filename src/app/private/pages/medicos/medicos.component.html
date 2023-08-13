@@ -1,13 +1,18 @@
 <div class="button">
-  <button  >  <i class="input-icon uil uil-user"></i>Ingresar Medico</button>
+  <button class="" (click)="openDialog()"><i class="input-icon uil uil-user"></i>Ingresar Medico </button>
 </div>
 
 <div class="table-container">
-  <div class="input-group" style="width: 50%;margin: 0 auto;">
-    <label for="date">Buscar:</label>
-    <input type="text" [(ngModel)]="term" />
+
+  <div class="container-search">
+    <input type="search" [(ngModel)]="term" placeholder="Buscar">
+    <div class="btn-search">
+      <i class="input-icon uil uil-search-alt"></i>
+    </div>
   </div>
-  <table>
+
+  <div class="container-table">
+    <table>
       <tr>
           <th>Id</th>
           <th>Nombre</th>
@@ -36,8 +41,10 @@
           </tr>
       </tbody>
       <!-- Agrega más filas según sea necesario -->
-  </table>
-</div>
+    </table>
+  </div>
 
-<app-crearmedico></app-crearmedico>
+</div>
+<!--
+<app-crearmedico></app-crearmedico> -->
 

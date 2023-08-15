@@ -30,6 +30,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CrearmedicoComponent } from './pages/medicos/components/crearmedico/crearmedico.component';
 import { ActualizarmedicoComponent } from './pages/medicos/components/actualizarmedico/actualizarmedico.component';
 import { CrearEspecialidadComponent } from './pages/especialidad/components/crear-especialidad/crear-especialidad.component';
+import { CrearTituloComponent } from './pages/titulos/components/crear-titulo/crear-titulo.component';
+import { CrearHorarioComponent } from './pages/horarios/components/crear-horario/crear-horario.component';
+import { CrearResetPasswordComponent } from './pages/reset-password/components/crear-reset-password/crear-reset-password.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -56,7 +59,10 @@ import { CrearEspecialidadComponent } from './pages/especialidad/components/crea
     TableusersComponent,
     CrearmedicoComponent,
     ActualizarmedicoComponent,
-    CrearEspecialidadComponent
+    CrearEspecialidadComponent,
+    CrearTituloComponent,
+    CrearHorarioComponent,
+    CrearResetPasswordComponent
   ],
   imports: [
     CommonModule,

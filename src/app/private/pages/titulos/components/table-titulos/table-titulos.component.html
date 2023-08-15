@@ -1,11 +1,44 @@
-
-
 <div class="table-container">
-  <div class="input-group" style="width: 50%;margin: 0 auto;">
-    <label for="date">Buscar:</label>
-    <input type="text" [(ngModel)]="term" />
+
+  <!-- siempre va igual es la parte de arriba -->
+  <div class="img-banner">
+    <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1692135775/Imagenes-MediBook/img/estetoscopio-sobre-informacion-paciente_yb1kit.jpg" alt="">
   </div>
-  <table>
+
+  <div class="texto-animado">
+    <div class="primer-txt">
+      <h1 class="primero">TÍTULOS DE</h1>
+    </div>
+    <div class="primer-txt">
+      <h1 class="segundo">MEDICOS</h1>
+    </div>
+  </div>
+
+ <!--  esto es la seccion buscar e ingresar -->
+
+  <div class="secciones-buscar-ingresar">
+
+    <div class="container-button">
+      <button class="btn rounded" (click)="openDialog()">
+        <span class="text-green"> <i class="input-icon uil uil-book-open" style="margin-right: 8px;"></i>Ingresar Titulo</span>
+      </button>
+    </div>
+
+    <div class="container-search">
+      <input type="search" [(ngModel)]="term" placeholder="Buscar">
+      <div class="btn-search">
+        <i class="input-icon uil uil-search-alt"></i>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="scroll-table">
+    <table>
       <tr>
           <th>Nombre</th>
           <th>Apellido</th>
@@ -14,12 +47,12 @@
           <th>Provincia</th>
           <th>Teléfono</th>
           <th>Correo</th>
-          <th>Nombre titulo</th>
+          <th>Nombre título</th>
           <th>Fecha</th>
           <th>Acciones</th>
       </tr>
       <tbody *ngIf="titulos">
-      <tr *ngFor="let titulo of titulos">
+      <tr *ngFor="let titulo of titulos |filter:term">
           <td>
             {{titulo.medico.usuario.nombre|titlecase}}
           </td>
@@ -48,13 +81,13 @@
             {{titulo.fecha|date}}
           </td>
           <td>
-            <button (click)="edit(titulo.id)">Editar</button>
-            <button (click)="delete(titulo.id)">Eliminar</button>
+            <button class="update" (click)="edit(titulo.id)"><i class="input-icon uil uil-edit"></i></button>
+            <button class="delete" (click)="delete(titulo.id)"><i class="input-icon uil uil-trash-alt"></i></button>
           </td>
 
-      </tr>
-    </tbody>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-      <!-- Agrega más filas según sea necesario -->
-  </table>
 </div>

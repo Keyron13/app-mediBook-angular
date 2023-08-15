@@ -44,8 +44,18 @@ img{
   width: 350px;
   height: 420px;
   filter: drop-shadow(-2px 2px 15px rgba(255, 255, 255, 0.7));
-  z-index: 200;}
+  z-index: 200;
+  animation: bannerAnimation 3s linear infinite;
+}
 
+@keyframes bannerAnimation {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
 
 /* Login container */
 #container{

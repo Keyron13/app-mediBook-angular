@@ -132,6 +132,7 @@ export class CrearmedicoComponent implements OnInit{
   editMedico(body:any){
     this.medico.update(body,this.medico_id).subscribe(data=>{
       this.notificacion.success('Medico actualizado','Proceso exitoso');
+      this.matDialog.closeAll();
       this.FormMedico.reset();
       this.medico_id=null;
       this.FormMedico.get('email')?.enable();

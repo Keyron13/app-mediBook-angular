@@ -74,7 +74,7 @@ export class CrearEspecialidadComponent {
       this.notificacion.success('Especialidad actualizada','Proceso exitoso');
       this.getEspecialidades();
       this.eventEmitterService.setEvent({event:'crear_especialidad'}); /* se crea para actualizar la tabla junto con el componente tabla */
-        this.matDialog.closeAll(); /* se agrega para cerrar el formulario */
+      this.matDialog.closeAll(); /* se agrega para cerrar el formulario */
       this.FormEspecialidad.reset();
       this.especialidad_id=null;
     })

@@ -1,0 +1,105 @@
+body {
+  background-image: url("https://res.cloudinary.com/duhm7ousd/image/upload/v1692056763/Imagenes-MediBook/img/banner_especialidad_mkaree.jpg");
+  background-size: cover;
+  background-position: start;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0;
+}
+
+.container {
+  background-color: #ffffff8a;
+  padding: 20px;
+  margin: 0px 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  text-align: center;
+}
+
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  margin-top: 8px;
+}
+
+input[type="date"],
+input[type="text"],
+select {
+  padding: 10px;
+  width: 90%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  outline: none;
+}
+
+.texto{
+  text-align: center;
+  font-size: 30pt;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #ffa007;
+  margin: 0;
+  padding:0px;
+  margin: 0px 20px;
+  width: 40%;
+}
+
+
+.input-group{
+  margin-bottom: 4px;
+  font-size: 15pt;
+}
+
+
+/* BOTON ENVIAR Y EDITAR */
+
+.button{
+  margin: 10px 0px;
+  top: 10px;
+  width: 9em;
+  height: 3em;
+  border-radius: 30em;
+  background-color: #edededc8;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 3px 3px 6px #f39d122c, -3px -3px 6px #f39d1225;
+}
+
+.button:hover{
+  transform: scale(1.1);
+}
+
+.txt-boton{
+  font-size: 17pt;
+  font-weight: bold;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: #F39C12;
+  margin: 0;
+  padding: 0;
+}
+
+.button::before{
+  content: '';
+  width: 0;
+  height: 3em;
+  border-radius: 30em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to right, #9fccf786 0%, #d5f5f48e);
+  transition: .5s ease;
+  display: block;
+  z-index: -1;
+}
+
+.button:hover::before{
+  width: 9em;
+}

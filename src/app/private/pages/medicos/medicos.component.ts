@@ -14,7 +14,7 @@ import { CrearmedicoComponent } from './components/crearmedico/crearmedico.compo
   templateUrl: './medicos.component.html',
   styleUrls: ['./medicos.component.scss'],
 })
-export class MedicosComponent {
+export class MedicosComponent{
 
   term!: string;
   eventEmitterService: any;
@@ -22,7 +22,7 @@ export class MedicosComponent {
   constructor(private readonly authService: AuthService,private router:Router,
     private medico:MedicoService,private eventEmitter:EventEmitterService,
     private notificacion:ToastrService,
-    public dialog: MatDialog){
+    public dialog: MatDialog,){
 
     authService.userInformation().subscribe(data=>{
       if(data.user.rol_id!==1){
@@ -61,11 +61,12 @@ export class MedicosComponent {
   }
 
   edit(id:any){
+    this.openDialog();
     this.eventEmitter.setEvent({event:'EDIT_MEDICO',id:id});
   }
 
   openDialog(){
-    this.dialog.open(CrearmedicoComponent);
+    this.dialog.open(CrearmedicoComponent,{width:'70%'});
   }
 
 }

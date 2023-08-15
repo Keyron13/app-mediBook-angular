@@ -1,7 +1,11 @@
 .contenedor{
   width: 83%;
-  background-color: rgba(0, 255, 255, 0.226);
   float: right;
+  background-image: url("https://res.cloudinary.com/duhm7ousd/image/upload/v1691954654/Imagenes-MediBook/img/19366_jitsfs.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
 }
 
 @media (max-width: 1289px) {

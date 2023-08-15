@@ -1,17 +1,36 @@
-<div class="button">
-  <button class="" (click)="openDialog()"><i class="input-icon uil uil-user"></i>Ingresar Medico </button>
-</div>
-
 <div class="table-container">
 
-  <div class="container-search">
-    <input type="search" [(ngModel)]="term" placeholder="Buscar">
-    <div class="btn-search">
-      <i class="input-icon uil uil-search-alt"></i>
+  <div class="img-banner">
+    <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1691986597/Imagenes-MediBook/img/Doctors-pana_vvrifc.png" alt="">
+  </div>
+
+  <div class="texto-animado">
+    <div class="primer-txt">
+      <h1 class="primero">BIENVENIDOS</h1>
+    </div>
+    <div class="primer-txt">
+      <h1 class="segundo">MEDICOS</h1>
     </div>
   </div>
 
-  <div class="container-table">
+  <div class="secciones-buscar-ingresar">
+
+    <div class="container-button">
+      <button class="btn rounded" (click)="openDialog()">
+        <span class="text-green"> <i class="input-icon uil uil-user-plus" style="margin-right: 8px;"></i>Ingresar Medico</span>
+      </button>
+    </div>
+
+    <div class="container-search">
+      <input type="search" [(ngModel)]="term" placeholder="Buscar">
+      <div class="btn-search">
+        <i class="input-icon uil uil-search-alt"></i>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-table">
     <table>
       <tr>
           <th>Id</th>
@@ -36,8 +55,10 @@
           <td>{{medico.usuario.datos_personale.telefono}}</td>
           <td>{{medico.especialidad.nombre}}</td>
           <td>{{medico.usuario.email}}</td>
-          <td><button class="update" (click)="edit(medico.id)"><i class="input-icon uil uil-edit"></i></button>
-            <button class="delete" (click)="delete(medico.id)"><i class="input-icon uil uil-trash-alt"></i></button></td>
+          <td>
+            <button class="update" (click)="edit(medico.id)"><i class="input-icon uil uil-edit"></i></button>
+            <button class="delete" (click)="delete(medico.id)"><i class="input-icon uil uil-trash-alt"></i></button>
+          </td>
           </tr>
       </tbody>
       <!-- Agrega más filas según sea necesario -->

@@ -1,154 +1,289 @@
-<h1 mat-dialog-title> Ingresar un nuevo Médico </h1>
+<h1 class="titulo" mat-dialog-title>{{ medico_id == null ? "INGRESAR UN NUEVO MÉDICO" : "MODIFICAR ESTE MÉDICO" }}</h1>
 <div mat-dialog-content class="container">
-  <form class="form" [formGroup]="FormMedico" (ngSubmit)="Crear(FormMedico.value)">
-    <div class="row">
+  <div style="width: 40%;">
+  </div>
+  <div style="width: 60%;">
+    <form
+    class="form"
+    [formGroup]="FormMedico"
+    (ngSubmit)="Crear(FormMedico.value)"
+  >
+    <div class="row" style="margin: auto; margin-bottom: 20px;">
       <div class="col">
         <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre"  formControlName="nombre">
-        <div
-        *ngIf="FormMedico.get('nombre')?.invalid && FormMedico.get('nombre')?.touched">
-        <span
-          *ngIf="FormMedico.get('nombre')?.hasError('required')"
-          style="color: red">
-          El Nombre es Requerido.</span>
-      </div>
+        <input type="text" id="nombre" name="nombre" formControlName="nombre" />
+        <div class="span"
+          *ngIf="
+            FormMedico.get('nombre')?.invalid &&
+            FormMedico.get('nombre')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('nombre')?.hasError('required')"
+            style="color: red"
+          >
+            El Nombre es Requerido.</span
+          >
+        </div>
       </div>
       <div class="col">
         <label for="apellido">Apellido:</label>
-        <input type="text" id="apellido" name="apellido" formControlName="apellido" >
-        <div
-        *ngIf="FormMedico.get('apellido')?.invalid && FormMedico.get('apellido')?.touched">
-        <span
-          *ngIf="FormMedico.get('apellido')?.hasError('required')"
-          style="color: red">
-          El Apellido es Requerido.</span>
-      </div>
+        <input
+          type="text"
+          id="apellido"
+          name="apellido"
+          formControlName="apellido"
+        />
+        <div class="span"
+          *ngIf="
+            FormMedico.get('apellido')?.invalid &&
+            FormMedico.get('apellido')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('apellido')?.hasError('required')"
+            style="color: red"
+          >
+            El Apellido es Requerido.</span
+          >
+        </div>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <label for="fecha">Fecha de Nacimiento:</label>
-        <input type="date" id="fecha" name="fecha" required formControlName="fecha">
-        <div
-        *ngIf="FormMedico.get('fecha')?.invalid && FormMedico.get('fecha')?.touched">
-        <span
-          *ngIf="FormMedico.get('fecha')?.hasError('required')"
-          style="color: red">
-          La fecha es Requerido.</span>
-      </div>
+        <label for="fecha" style="font-size: 10pt;">Fecha de Nacimiento:</label>
+        <input
+          type="date"
+          id="fecha"
+          name="fecha"
+          required
+          formControlName="fecha"
+        />
+        <div class="span"
+          *ngIf="
+            FormMedico.get('fecha')?.invalid && FormMedico.get('fecha')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('fecha')?.hasError('required')"
+            style="color: red"
+          >
+            La fecha es Requerido.</span
+          >
+        </div>
       </div>
       <div class="col">
         <label for="cedula">Cédula:</label>
-        <input type="text" id="cedula" name="cedula" formControlName="ci">
-        <div
-        *ngIf="FormMedico.get('ci')?.invalid && FormMedico.get('ci')?.touched">
-        <span
-          *ngIf="FormMedico.get('ci')?.hasError('required')"
-          style="color: red">
-          La Cedula es Requerido.</span>
-      </div>
-      <div
-      *ngIf="FormMedico.get('ci')?.hasError('maxlength')" style="color: red;">
-      10 Caracteres como Máximo.
-      </div>
-      <div
-      *ngIf="FormMedico.get('ci')?.hasError('pattern')" style="color: red;">
-      La cedula debe contener solo números.
-      </div>
+        <input type="text" id="cedula" name="cedula" formControlName="ci" />
+        <div class="span"
+          *ngIf="FormMedico.get('ci')?.invalid && FormMedico.get('ci')?.touched"
+        >
+          <span
+            *ngIf="FormMedico.get('ci')?.hasError('required')"
+            style="color: red"
+          >
+            La Cedula es Requerido.</span
+          >
+        </div>
+        <div class="span"
+          *ngIf="FormMedico.get('ci')?.hasError('maxlength')"
+          style="color: red"
+        >
+          10 Caracteres como Máximo.
+        </div>
+        <div class="span"
+          *ngIf="FormMedico.get('ci')?.hasError('pattern')"
+          style="color: red"
+        >
+          La cedula debe contener solo números.
+        </div>
       </div>
       <div class="col">
         <label for="telefono">Teléfono:</label>
-        <input type="tel" id="telefono" name="telefono" formControlName="telefono">
-        <div
-        *ngIf="FormMedico.get('telefono')?.invalid && FormMedico.get('telefono')?.touched">
-        <span
-          *ngIf="FormMedico.get('telefono')?.hasError('required')"
-          style="color: red">
-          El telefono es Requerido.</span>
-      </div>
+        <input
+          type="tel"
+          id="telefono"
+          name="telefono"
+          formControlName="telefono"
+        />
+        <div class="span"
+          *ngIf="
+            FormMedico.get('telefono')?.invalid &&
+            FormMedico.get('telefono')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('telefono')?.hasError('required')"
+            style="color: red"
+          >
+            El telefono es Requerido.</span
+          >
+        </div>
 
-      <div
-      *ngIf="FormMedico.get('telefono')?.hasError('maxlength')" style="color: red;">
-      10 Caracteres como Máximo.
-      </div>
-      <div
-      *ngIf="FormMedico.get('telefono')?.hasError('pattern')" style="color: red;">
-      El telefono debe contener solo números.
-      </div>
+        <div class="span"
+          *ngIf="FormMedico.get('telefono')?.hasError('maxlength')"
+          style="color: red"
+        >
+          10 Caracteres como Máximo.
+        </div>
+        <div class="span"
+          *ngIf="FormMedico.get('telefono')?.hasError('pattern')"
+          style="color: red"
+        >
+          El telefono debe contener solo números.
+        </div>
       </div>
     </div>
     <div class="row">
-       <div class="col">
+      <div class="col">
         <label for="especialidad">Especialidad:</label>
-        <select id="especialidad" name="especialidad" formControlName="especialidad_id" *ngIf="especialidad|async as especialidades">
-        <option *ngFor="let especialidad of especialidades" [value]="especialidad.id">{{ especialidad.nombre }}</option>
+        <select
+          id="especialidad"
+          name="especialidad"
+          formControlName="especialidad_id"
+          *ngIf="especialidad | async as especialidades"
+        >
+          <option
+            *ngFor="let especialidad of especialidades"
+            [value]="especialidad.id"
+          >
+            {{ especialidad.nombre }}
+          </option>
         </select>
-        <div
-        *ngIf="FormMedico.get('especialidad_id')?.invalid && FormMedico.get('especialidad_id')?.touched">
-        <span *ngIf="FormMedico.get('especialidad_id')?.hasError('required')"
-         style="color: red;"> El Especialidad es Requerido.</span>
+        <div class="span"
+          *ngIf="
+            FormMedico.get('especialidad_id')?.invalid &&
+            FormMedico.get('especialidad_id')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('especialidad_id')?.hasError('required')"
+            style="color: red"
+          >
+            El Especialidad es Requerido.</span
+          >
         </div>
       </div>
       <div class="col">
         <label for="Provincia">Provincia:</label>
-        <select id="Provincia" name="Provincia" formControlName="provincia" [(ngModel)]="selectedProvincia"
-         (change)="onProvinciaSelected(selectedProvincia)">
-          <option *ngFor="let item of provincias" [value]="item.id">{{ item.label }}</option>
+        <select
+          id="Provincia"
+          name="Provincia"
+          formControlName="provincia"
+          [(ngModel)]="selectedProvincia"
+          (change)="onProvinciaSelected(selectedProvincia)"
+        >
+          <option *ngFor="let item of provincias" [value]="item.id">
+            {{ item.label }}
+          </option>
         </select>
-        <div
-        *ngIf="FormMedico.get('provincia')?.invalid && FormMedico.get('provincia')?.touched">
-        <span *ngIf="FormMedico.get('provincia')?.hasError('required')"
-         style="color: red;"> La Provincia es Requerido.</span>
+        <div class="span"
+          *ngIf="
+            FormMedico.get('provincia')?.invalid &&
+            FormMedico.get('provincia')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('provincia')?.hasError('required')"
+            style="color: red"
+          >
+            La Provincia es Requerido.</span
+          >
         </div>
-
       </div>
-        <div class="col">
+      <div class="col">
         <label for="canton">Cantón:</label>
-        <select id="canton" name="canton" formControlName="canton" [(ngModel)]="selectedCanton"
-        (change)="onCantonesSelected(selectedCanton)">
-        <option *ngFor="let item of cantones" [value]="item.id">{{ item.label }}</option>
+        <select
+          id="canton"
+          name="canton"
+          formControlName="canton"
+          [(ngModel)]="selectedCanton"
+          (change)="onCantonesSelected(selectedCanton)"
+        >
+          <option *ngFor="let item of cantones" [value]="item.id">
+            {{ item.label }}
+          </option>
         </select>
-        <div
-        *ngIf="FormMedico.get('canton')?.invalid && FormMedico.get('canton')?.touched">
-        <span *ngIf="FormMedico.get('canton')?.hasError('required')"
-         style="color: red;"> El canton es Requerido.</span>
+        <div class="span"
+          *ngIf="
+            FormMedico.get('canton')?.invalid &&
+            FormMedico.get('canton')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('canton')?.hasError('required')"
+            style="color: red"
+          >
+            El canton es Requerido.</span
+          >
         </div>
       </div>
-
     </div>
     <div class="row">
       <div class="col">
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" formControlName="email">
-        <div
-        *ngIf="FormMedico.get('email')?.invalid && FormMedico.get('email')?.touched">
-        <span *ngIf="FormMedico.get('email')?.hasError('required')"
-         style="color: red;"> Correo Electrónico Requerido.</span>
+        <input type="email" id="email" name="email" formControlName="email" />
+        <div class="span"
+          *ngIf="
+            FormMedico.get('email')?.invalid && FormMedico.get('email')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('email')?.hasError('required')"
+            style="color: red"
+          >
+            Correo Electrónico Requerido.</span
+          >
         </div>
-        <div  *ngIf="FormMedico.get('email')?.hasError('email')" style="color: red;">
+        <div class="span"
+          *ngIf="FormMedico.get('email')?.hasError('email')"
+          style="color: red"
+        >
           Se requiere un correo valido.
-       </div>
+        </div>
       </div>
       <div class="col">
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" formControlName="password">
-        <div  *ngIf="FormMedico.get('password')?.invalid && FormMedico.get('password')?.touched">
-          <span *ngIf="FormMedico.get('password')?.hasError('required')" style="color: red;"> Contraseña Requerido.</span>
-       </div>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          formControlName="password"
+        />
+        <div class="span"
+          *ngIf="
+            FormMedico.get('password')?.invalid &&
+            FormMedico.get('password')?.touched
+          "
+        >
+          <span
+            *ngIf="FormMedico.get('password')?.hasError('required')"
+            style="color: red"
+          >
+            Contraseña Requerido.</span
+          >
+        </div>
         <!-- Validación en caso que el usuario ingrese menor de 5 caracteres -->
-      <div  *ngIf="FormMedico.get('password')?.hasError('minlength')" style="color: red;">
-      Nesecitas 5 Caracteres como Mínimo.
-      </div>
-      <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
-       <div
-      *ngIf="FormMedico.get('password')?.hasError('maxlength')" style="color: red;">
-      10 Caracteres como Máximo.
-      </div>
+        <div class="span"
+          *ngIf="FormMedico.get('password')?.hasError('minlength')"
+          style="color: red"
+        >
+          Nesecitas 5 Caracteres como Mínimo.
+        </div>
+        <!-- Validación en caso que el usuario ingreso mayor a 10 de caracteres -->
+        <div
+          *ngIf="FormMedico.get('password')?.hasError('maxlength')"
+          style="color: red"
+        >
+          10 Caracteres como Máximo.
+        </div>
       </div>
     </div>
-    <button type="submit" [disabled]="FormMedico.invalid"> {{medico_id==null?'Enviar':'Editar'}} </button>
+    <button class="boton-form type3" type="submit" [disabled]="FormMedico.invalid">
+      {{ medico_id == null ? "Enviar" : "Editar" }}
+    </button>
+
   </form>
-</div>
-<div  mat-dialog-actions align="end">
-  <button  mat-button  mat-dialog-close> Cerrar </button>
+  </div>
+
 </div>

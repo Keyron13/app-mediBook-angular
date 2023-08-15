@@ -1,6 +1,7 @@
 
 import { AfterViewInit, Component, ElementRef, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, map } from 'rxjs';
@@ -22,6 +23,7 @@ export class CrearmedicoComponent implements OnInit{
     private medico: MedicoService,
     private readonly eventEmitterService: EventEmitterService,
     private es:EspecialidadService,
+    private matDialog: MatDialog,
 
   ) {
     this.especialidad = this.es.obtenerTodos().pipe(map((data) => data.especialidades));
@@ -86,6 +88,7 @@ export class CrearmedicoComponent implements OnInit{
        this.medico.create(body).subscribe((data)=>{
         this.notificacion.success('El medico fue creado con exito','Proceso exitoso')
         this.FormMedico.reset();
+        this.matDialog.closeAll();
         this.eventEmitterService.setEvent({
           event:'CREATE_MEDICO'
         })
@@ -529,6 +532,7 @@ selectedProvincia: any;
   onCantonesSelected(data:string) {
     console.log(data);
   }
+
 
 }
 

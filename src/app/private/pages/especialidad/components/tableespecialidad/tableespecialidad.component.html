@@ -1,28 +1,51 @@
-
-
 <div class="table-container">
-  <div class="input-group" style="width: 50%;margin: 0 auto;">
-    <label for="date">Buscar:</label>
-    <input type="text" [(ngModel)]="term" />
+
+  <div class="img-banner">
+    <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1691998812/Imagenes-MediBook/img/medicos_especialidad_zohx2v.jpg" alt="">
   </div>
-  <table>
+
+  <div class="texto-animado">
+    <div class="primer-txt">
+      <h1 class="primero">ESPECIALIDADES DE</h1>
+    </div>
+    <div class="primer-txt">
+      <h1 class="segundo">MEDICOS</h1>
+    </div>
+  </div>
+
+  <div class="secciones-buscar-ingresar">
+
+    <div class="container-button">
+      <button class="btn rounded" (click)="openDialog()">
+        <span class="text-green"> <i class="input-icon uil uil-medical-square-full" style="margin-right: 8px;"></i>Ingresar Especialidad</span>
+      </button>
+    </div>
+
+    <div class="container-search">
+      <input type="search" [(ngModel)]="term" placeholder="Buscar">
+      <div class="btn-search">
+        <i class="input-icon uil uil-search-alt"></i>
+      </div>
+    </div>
+
+  </div>
+  <div class="scroll-table">
+    <table>
       <tr>
-          <th>Nombre</th>
-          <th>Acciones</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
       </tr>
       <tbody *ngIf="especialidades">
-      <tr *ngFor="let especialidad of especialidades|filter:term">
+        <tr *ngFor="let especialidad of especialidades|filter:term">
           <td>
             {{especialidad.nombre|titlecase}}
           </td>
           <td>
-            <button (click)="edit(especialidad.id)">Editar</button>
-            <button (click)="delete(especialidad.id)">Eliminar</button>
+            <button class="update" (click)="edit(especialidad.id)"><i class="input-icon uil uil-edit"></i></button>
+            <button class="delete" (click)="delete(especialidad.id)"><i class="input-icon uil uil-trash-alt"></i></button>
           </td>
-
-      </tr>
-    </tbody>
-
-      <!-- Agrega más filas según sea necesario -->
-  </table>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

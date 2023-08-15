@@ -1,22 +1,3 @@
+<app-tableespecialidad [especialidades]="especialidades" />
 
-<body>
-  <div class="container">
-      <h2>Horarios Para medicos</h2>
-      <form [formGroup]="FormEspecialidad" (ngSubmit)="onSubmit(FormEspecialidad.value)">
-        <div class="input-group">
-          <label for="hora">Nombre especialidad:</label>
 
-          <input type="text" id="hora" name="horaF"  formControlName="nombre">
-        </div>
-        <div
-        *ngIf="FormEspecialidad.get('nombre')?.invalid && FormEspecialidad.get('nombre')?.touched">
-        <span *ngIf="FormEspecialidad.get('nombre')?.hasError('required')"
-         style="color: red;"> Nombre de especialidad es Requerido.</span>
-
-        </div>
-
-        <button class="button" type="submit" [disabled]="FormEspecialidad.invalid">{{especialidad_id==null?'Enviar':'Editar'}}</button>
-      </form>
-    </div>
-  </body>
-  <app-tableespecialidad [especialidades]="especialidades" />

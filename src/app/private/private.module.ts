@@ -29,6 +29,7 @@ import { TableusersComponent } from './pages/reset-password/components/tableuser
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { CrearmedicoComponent } from './pages/medicos/components/crearmedico/crearmedico.component';
 import { ActualizarmedicoComponent } from './pages/medicos/components/actualizarmedico/actualizarmedico.component';
+import { CrearEspecialidadComponent } from './pages/especialidad/components/crear-especialidad/crear-especialidad.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -54,7 +55,8 @@ import { ActualizarmedicoComponent } from './pages/medicos/components/actualizar
     TablereseniasComponent,
     TableusersComponent,
     CrearmedicoComponent,
-    ActualizarmedicoComponent
+    ActualizarmedicoComponent,
+    CrearEspecialidadComponent
   ],
   imports: [
     CommonModule,

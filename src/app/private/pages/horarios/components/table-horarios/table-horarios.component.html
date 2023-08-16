@@ -1,64 +1,101 @@
-
-
 <div class="table-container">
-  <div class="input-group" style="width: 50%;margin: 0 auto;" *ngIf="user.rol_id==1">
-    <label for="date">Buscar:</label>
-    <input type="text" [(ngModel)]="term" />
-  </div>
-  <table>
-      <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Cédula</th>
-          <th>Cantón</th>
-          <th>Provincia</th>
-          <th>Teléfono</th>
-          <th>Correo</th>
-          <th>Dia</th>
-          <th>Hora inicio</th>
-          <th>Hora fin</th>
-          <th *ngIf="user.rol_id==1">Acciones</th>
-      </tr>
-      <tbody *ngIf="horarios">
-      <tr *ngFor="let horario of horarios|filter:term">
-        <td>
-          {{horario.medico.usuario.nombre|titlecase}}
-        </td>
-        <td>
-          {{horario.medico.usuario.apellido|titlecase}}
-        </td>
-        <td>
-          {{horario.medico.usuario.datos_personale.ci|titlecase}}
-        </td>
-        <td>
-          {{horario.medico.usuario.ubicacion.canton|titlecase}}
-        </td>
-        <td>
-          {{horario.medico.usuario.ubicacion.provincia|titlecase}}
-        </td>
-        <td>
-          {{horario.medico.usuario.datos_personale.telefono}}
-        </td>
-        <td>
-          {{horario.medico.usuario.email}}
-        </td>
-        <td>
-          {{horario.dia}}
-        </td>
-        <td>
-          {{horario.hora_inicio}}
-        </td>
-        <td>
-          {{horario.hora_fin}}
-        </td>
-          <td *ngIf="user.rol_id==1">
-            <button (click)="edit(horario.id)">Editar</button>
-            <button (click)="delete(horario.id)">Eliminar</button>
-          </td>
 
-      </tr>
-    </tbody>
 
-      <!-- Agrega más filas según sea necesario -->
-  </table>
+
+    <!-- siempre va igual es la parte de arriba -->
+    <div class="img-banner">
+        <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1692135775/Imagenes-MediBook/img/estetoscopio-sobre-informacion-paciente_yb1kit.jpg" alt="">
+    </div>
+
+    <div class="texto-animado">
+        <div class="primer-txt">
+            <h1 class="primero">HORARIOS DE</h1>
+        </div>
+        <div class="primer-txt">
+            <h1 class="segundo">MEDICOS</h1>
+        </div>
+    </div>
+
+    <!--  esto es la seccion buscar e ingresar -->
+
+    <div class="secciones-buscar-ingresar">
+
+        <div class="container-button">
+            <button class="btn rounded" (click)="openDialog()">
+        <span class="text-green"> <i class="input-icon uil uil-clock" style="margin-right: 8px;"></i>Ingresar Horario</span>
+      </button>
+        </div>
+
+        <div class="container-search">
+            <input type="search" [(ngModel)]="term" placeholder="Buscar">
+            <div class="btn-search">
+                <i class="input-icon uil uil-search-alt"></i>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="scroll-table">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Cantón</th>
+                <th>Provincia</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Dia</th>
+                <th>Hora inicio</th>
+                <th>Hora fin</th>
+                <th *ngIf="user.rol_id==1">Acciones</th>
+            </tr>
+            <tbody *ngIf="horarios">
+                <tr *ngFor="let horario of horarios|filter:term">
+                    <td>
+                        {{horario.medico.usuario.nombre|titlecase}}
+                    </td>
+                    <td>
+                        {{horario.medico.usuario.apellido|titlecase}}
+                    </td>
+                    <td>
+                        {{horario.medico.usuario.datos_personale.ci|titlecase}}
+                    </td>
+                    <td>
+                        {{horario.medico.usuario.ubicacion.canton|titlecase}}
+                    </td>
+                    <td>
+                        {{horario.medico.usuario.ubicacion.provincia|titlecase}}
+                    </td>
+                    <td>
+                        {{horario.medico.usuario.datos_personale.telefono}}
+                    </td>
+                    <td>
+                        {{horario.medico.usuario.email}}
+                    </td>
+                    <td>
+                        {{horario.dia}}
+                    </td>
+                    <td>
+                        {{horario.hora_inicio}}
+                    </td>
+                    <td>
+                        {{horario.hora_fin}}
+                    </td>
+                    <td *ngIf="user.rol_id==1">
+                        <button (click)="edit(horario.id)">Editar</button>
+                        <button (click)="delete(horario.id)">Eliminar</button>
+                    </td>
+
+                </tr>
+            </tbody>
+
+            <!-- Agrega más filas según sea necesario -->
+        </table>
+    </div>
+
+
 </div>

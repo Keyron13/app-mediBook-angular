@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { EventEmitterService } from 'src/app/private/services/eventEmitter.service';
 import { HorarioService } from 'src/app/private/services/horario.service';
+import { CrearHorarioComponent } from '../crear-horario/crear-horario.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-table-horarios',
@@ -13,7 +15,8 @@ export class TableHorariosComponent {
 
   @Input() horarios:any;
   @Input() user:any;
-  constructor(private horarioService:HorarioService,private toastService:ToastrService,private eventEmitter:EventEmitterService){
+ 
+  constructor(private horarioService:HorarioService,private toastService:ToastrService,private eventEmitter:EventEmitterService,public dialog: MatDialog ){
   }
   delete(id:any){
     this.horarioService.delete(id).subscribe((data)=>{
@@ -23,5 +26,9 @@ export class TableHorariosComponent {
   }
   edit(id:any){
       this.eventEmitter.setEvent({event:'EDIT_HORARIO',id:id});
+  }
+
+  openDialog(){
+    this.dialog.open(CrearHorarioComponent,{width:'50%', height:'500px'});
   }
 }

@@ -1,17 +1,13 @@
 <body>
-  <h1 class="texto">{{ titulo_id == null ? "INGRESAR NUEVO TÍTULO" : "ACTUALIZAR TÍTULO" }}</h1>
-  <div class="container">
-    <form [formGroup]="FormTitulo" (ngSubmit)="onSubmitTitulo()">
-      <div class="input-group">
-        <label for="hora">Nombre del titulo:</label>
-        <input type="text" id="hora" name="nombre" formControlName="nombre" />
-      </div>
-      <div
-        *ngIf="FormTitulo.get('nombre')?.invalid && FormTitulo.get('nombre')?.touched">
-        <span
-          *ngIf="FormTitulo.get('nombre')?.hasError('required')"
-          style="color: red"
-        >
+    <h1 class="texto">{{ titulo_id == null ? "INGRESAR NUEVO TÍTULO" : "ACTUALIZAR TÍTULO" }}</h1>
+    <div class="container">
+        <form [formGroup]="FormTitulo" (ngSubmit)="onSubmitTitulo()">
+            <div class="input-group">
+                <label for="hora">Nombre del titulo:</label>
+                <input type="text" id="hora" name="nombre" formControlName="nombre" />
+            </div>
+            <div *ngIf="FormTitulo.get('nombre')?.invalid && FormTitulo.get('nombre')?.touched">
+                <span *ngIf="FormTitulo.get('nombre')?.hasError('required')" style="color: red">
           El Nombre es Requerido.</span
         >
       </div>

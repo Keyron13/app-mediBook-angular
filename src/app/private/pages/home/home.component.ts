@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+  @HostListener('click', ['$event.target'])
+  onClick(target: HTMLDivElement) {
+  const audio = new Audio('assets/sonidos/deslizar.mp3');
+  console.log('llego');
+  audio.play();
+}
 
 }

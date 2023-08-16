@@ -1,61 +1,93 @@
-
-
 <div class="table-container">
-  <div class="input-group" style="width: 50%;margin: 0 auto;">
-    <label for="date">Buscar:</label>
-    <input type="text" [(ngModel)]="term" />
-  </div>
-  <table>
-      <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
-          <th>Cédula</th>
-          <th>Cantón</th>
-          <th>Provincia</th>
-          <th>Teléfono</th>
-          <th>Correo</th>
-          <th>Rol</th>
-          <th>Acciones</th>
-      </tr>
-      <tbody *ngIf="users">
-      <tr *ngFor="let user of users|filter:term">
-          <td>
-            {{user.usuario.nombre|titlecase}}
-          </td>
-          <td>
-            {{user.usuario.apellido|titlecase}}
-          </td>
-          <td>
-            {{user.usuario.datos_personale.ci|titlecase}}
-          </td>
-          <td>
-            {{user.usuario.ubicacion.canton|titlecase}}
-          </td>
-          <td>
-            {{user.usuario.ubicacion.provincia|titlecase}}
-          </td>
-          <td>
-            {{user.usuario.datos_personale.telefono}}
-          </td>
-          <td>
-            {{user.usuario.email}}
-          </td>
-          <td>
-            {{user.usuario.rol.nombre|titlecase}}
-          </td>
-          <td>
-            {{user.nombre|titlecase}}
-          </td>
-          <td>
-            {{user.fecha|date}}
-          </td>
-          <td>
-            <button (click)="seleccion(user.usuario.id)">Seleccionar</button>
-          </td>
+    <!-- siempre va igual es la parte de arriba -->
+    <div class="img-banner">
+        <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1692135775/Imagenes-MediBook/img/estetoscopio-sobre-informacion-paciente_yb1kit.jpg" alt="">
+    </div>
 
-      </tr>
-    </tbody>
+    <div class="texto-animado">
+        <div class="primer-txt">
+            <h1 class="primero">CAMBIAR</h1>
+        </div>
+        <div class="primer-txt">
+            <h1 class="segundo">PASSWORD</h1>
+        </div>
+    </div>
 
-      <!-- Agrega más filas según sea necesario -->
-  </table>
+    <!--  esto es la seccion buscar e ingresar -->
+
+    <div class="secciones-buscar-ingresar">
+
+
+        <div class="container-search">
+            <input type="search" [(ngModel)]="term" placeholder="Buscar">
+            <div class="btn-search">
+                <i class="input-icon uil uil-search-alt"></i>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <div class="scroll-table">
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Cédula</th>
+                <th>Cantón</th>
+                <th>Provincia</th>
+                <th>Teléfono</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+            <tbody *ngIf="users">
+                <tr *ngFor="let user of users|filter:term">
+                    <td>
+                        {{user.usuario.nombre|titlecase}}
+                    </td>
+                    <td>
+                        {{user.usuario.apellido|titlecase}}
+                    </td>
+                    <td>
+                        {{user.usuario.datos_personale.ci|titlecase}}
+                    </td>
+                    <td>
+                        {{user.usuario.ubicacion.canton|titlecase}}
+                    </td>
+                    <td>
+                        {{user.usuario.ubicacion.provincia|titlecase}}
+                    </td>
+                    <td>
+                        {{user.usuario.datos_personale.telefono}}
+                    </td>
+                    <td>
+                        {{user.usuario.email}}
+                    </td>
+                    <td>
+                        {{user.usuario.rol.nombre|titlecase}}
+                    </td>
+                    <!-- <td>
+                        {{user.nombre|titlecase}}
+                    </td> -->
+                    <!--  <td>
+                        {{user.fecha|date}}
+                    </td> -->
+                    <td>
+                        <button class="update" (click)="openDialog()"><i class="input-icon uil uil-edit"></i></button>
+
+                        <!--                         <button (click)="seleccion(user.usuario.id)">Seleccionar</button>
+ -->
+                    </td>
+
+                </tr>
+            </tbody>
+
+            <!-- Agrega más filas según sea necesario -->
+        </table>
+    </div>
 </div>

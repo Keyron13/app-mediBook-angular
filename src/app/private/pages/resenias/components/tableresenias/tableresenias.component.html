@@ -1,95 +1,120 @@
 <div class="table-container">
-  <div class="input-group" style="width: 50%; margin: 0 auto">
-    <label for="date">Buscar:</label>
-    <input type="text" [(ngModel)]="term" />
-  </div>
-  <table>
-    <tr>
-      <th>CI Paciente</th>
-      <th>Nombres Paciente</th>
-      <th>Telefono Paciente</th>
-      <th>CI Medico</th>
-      <th>Nombres Medico</th>
-      <th>Telefono Medico</th>
-      <th>Especialidad</th>
-      <th>Fecha</th>
-      <th>Calificacion</th>
-      <th>Comentario</th>
-    </tr>
-    <tbody *ngIf="resenias">
-      <tr *ngFor="let resenias of resenias | filter : term">
-       <ng-container *ngIf="resenias.cita" >
-        <td>
-          {{ resenias.cita.paciente.usuario.datos_personale.ci  }}
-        </td>
-        <td>
-          {{ resenias.cita.paciente.usuario.nombre | titlecase }}
-          {{ resenias.cita.paciente.usuario.apellido | titlecase }}
-        </td>
-        <td>
-          {{ resenias.cita.paciente.usuario.datos_personale.telefono | titlecase }}
-        </td>
-       <td> {{ resenias.cita.medico.usuario.datos_personale.ci  }}</td>
 
-        <td>
-          {{ resenias.cita.medico.usuario.nombre | titlecase }}
-          {{ resenias.cita.medico.usuario.apellido | titlecase }}
-        </td>
-        <td>
-          {{ resenias.cita.medico.usuario.datos_personale.telefono | titlecase }}
-        </td>
-        <td>
-          {{ resenias.cita.medico.especialidad.nombre | titlecase }}
-        </td>
-        <td>
-          {{ resenias.cita.fecha | date }}
-        </td>
-        <td>
-          {{resenias.calificacion}}
-        </td>
-        <td>
-          {{resenias.comentario.nombre}}
-        </td>
-       </ng-container>
-       <ng-container *ngIf="resenias.cita_observacion?.resenia" >
-        <td>
-          {{ resenias.paciente.usuario.datos_personale.ci  }}
-        </td>
-        <td>
-          {{ resenias.paciente.usuario.nombre | titlecase }}
-          {{ resenias.paciente.usuario.apellido | titlecase }}
-        </td>
-        <td>
-          {{ resenias.paciente.usuario.datos_personale.telefono | titlecase }}
-        </td>
-       <td> {{ resenias.medico.usuario.datos_personale.ci  }}</td>
 
-        <td>
-          {{ resenias.medico.usuario.nombre | titlecase }}
-          {{ resenias.medico.usuario.apellido | titlecase }}
-        </td>
-        <td>
-          {{ resenias.medico.usuario.datos_personale.telefono | titlecase }}
-        </td>
-        <td>
-          {{ resenias.medico.especialidad.nombre | titlecase }}
-        </td>
-        <td>
-          {{ resenias.fecha | date }}
-        </td>
-        <td>
-          <ng-container *ngFor="let co of resenias.resenia">
-            {{co.calificacion}}
-          </ng-container>
-        </td>
-        <td>
-          <ng-container *ngFor="let co of resenias.resenia">
-            {{co.comentario.nombre}}
-          </ng-container>
-        </td>
-       </ng-container>
-      </tr>
-    </tbody>
-    <!-- Agrega más filas según sea necesario -->
-  </table>
+    <!-- siempre va igual es la parte de arriba -->
+    <div class="img-banner">
+        <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1692135775/Imagenes-MediBook/img/estetoscopio-sobre-informacion-paciente_yb1kit.jpg" alt="">
+    </div>
+
+    <div class="texto-animado">
+        <div class="primer-txt">
+            <h1 class="primero">RESEÑAS DE </h1>
+        </div>
+        <div class="primer-txt">
+            <h1 class="segundo">PACIENTES</h1>
+        </div>
+    </div>
+
+    <!--  esto es la seccion buscar e ingresar -->
+
+    <div class="secciones-buscar-ingresar">
+
+
+        <div class="container-search">
+            <input type="search" [(ngModel)]="term" placeholder="Buscar">
+            <div class="btn-search">
+                <i class="input-icon uil uil-search-alt"></i>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="scroll-table">
+        <table>
+            <tr>
+                <th>CI Paciente</th>
+                <th>Nombres Paciente</th>
+                <th>Telefono Paciente</th>
+                <th>CI Medico</th>
+                <th>Nombres Medico</th>
+                <th>Telefono Medico</th>
+                <th>Especialidad</th>
+                <th>Fecha</th>
+                <th>Calificacion</th>
+                <th>Comentario</th>
+            </tr>
+            <tbody *ngIf="resenias">
+                <tr *ngFor="let resenias of resenias | filter : term">
+                    <ng-container *ngIf="resenias.cita">
+                        <td>
+                            {{ resenias.cita.paciente.usuario.datos_personale.ci }}
+                        </td>
+                        <td>
+                            {{ resenias.cita.paciente.usuario.nombre | titlecase }} {{ resenias.cita.paciente.usuario.apellido | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.cita.paciente.usuario.datos_personale.telefono | titlecase }}
+                        </td>
+                        <td> {{ resenias.cita.medico.usuario.datos_personale.ci }}</td>
+
+                        <td>
+                            {{ resenias.cita.medico.usuario.nombre | titlecase }} {{ resenias.cita.medico.usuario.apellido | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.cita.medico.usuario.datos_personale.telefono | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.cita.medico.especialidad.nombre | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.cita.fecha | date }}
+                        </td>
+                        <td>
+                            {{resenias.calificacion}}
+                        </td>
+                        <td>
+                            {{resenias.comentario.nombre}}
+                        </td>
+                    </ng-container>
+                    <ng-container *ngIf="resenias.cita_observacion?.resenia">
+                        <td>
+                            {{ resenias.paciente.usuario.datos_personale.ci }}
+                        </td>
+                        <td>
+                            {{ resenias.paciente.usuario.nombre | titlecase }} {{ resenias.paciente.usuario.apellido | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.paciente.usuario.datos_personale.telefono | titlecase }}
+                        </td>
+                        <td> {{ resenias.medico.usuario.datos_personale.ci }}</td>
+
+                        <td>
+                            {{ resenias.medico.usuario.nombre | titlecase }} {{ resenias.medico.usuario.apellido | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.medico.usuario.datos_personale.telefono | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.medico.especialidad.nombre | titlecase }}
+                        </td>
+                        <td>
+                            {{ resenias.fecha | date }}
+                        </td>
+                        <td>
+                            <ng-container *ngFor="let co of resenias.resenia">
+                                {{co.calificacion}}
+                            </ng-container>
+                        </td>
+                        <td>
+                            <ng-container *ngFor="let co of resenias.resenia">
+                                {{co.comentario.nombre}}
+                            </ng-container>
+                        </td>
+                    </ng-container>
+                </tr>
+            </tbody>
+            <!-- Agrega más filas según sea necesario -->
+        </table>
+    </div>
 </div>

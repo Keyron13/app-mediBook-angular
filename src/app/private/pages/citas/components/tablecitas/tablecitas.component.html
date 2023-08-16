@@ -1,56 +1,87 @@
 <div class="table-container">
-  <div class="input-group" style="width: 50%; margin: 0 auto">
-    <label for="date">Buscar:</label>
-    <input type="text" [(ngModel)]="term" />
-  </div>
-  <table>
-    <tr>
-      <th>CI Paciente</th>
-      <th>Nombres Paciente</th>
-      <th>Telefono Paciente</th>
-      <th>CI Medico</th>
-      <th>Nombres Medico</th>
-      <th>Telefono Medico</th>
-      <th>Especialidad</th>
-      <th>Fecha</th>
-      <th>Hora</th>
-      <th>Estado de cita</th>
-    </tr>
-    <tbody *ngIf="citas">
-      <tr *ngFor="let cita of citas | filter : term">
-        <td>
-          {{ cita.paciente.usuario.datos_personale.ci  }}
-        </td>
-        <td>
-          {{ cita.paciente.usuario.nombre | titlecase }}
-          {{ cita.paciente.usuario.apellido | titlecase }}
-        </td>
-        <td>
-          {{ cita.paciente.usuario.datos_personale.telefono | titlecase }}
-        </td>
-       <td> {{ cita.medico.usuario.datos_personale.ci  }}</td>
 
-        <td>
-          {{ cita.medico.usuario.nombre | titlecase }}
-          {{ cita.medico.usuario.apellido | titlecase }}
-        </td>
-        <td>
-          {{ cita.medico.usuario.datos_personale.telefono | titlecase }}
-        </td>
-        <td>
-          {{ cita.medico.especialidad.nombre | titlecase }}
-        </td>
-        <td>
-          {{ cita.fecha | date }}
-        </td>
-        <td>
-          De {{ cita.hora_inicio  }} a {{cita.hora_fin}}
-        </td>
-        <td>
-          {{cita.estado_cita.nombre}}
-        </td>
-      </tr>
-    </tbody>
-    <!-- Agrega más filas según sea necesario -->
-  </table>
+
+    <!-- siempre va igual es la parte de arriba -->
+    <div class="img-banner">
+        <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1692135775/Imagenes-MediBook/img/estetoscopio-sobre-informacion-paciente_yb1kit.jpg" alt="">
+    </div>
+
+    <div class="texto-animado">
+        <div class="primer-txt">
+            <h1 class="primero">CITAS</h1>
+        </div>
+        <div class="primer-txt">
+            <h1 class="segundo">MEDICAS</h1>
+        </div>
+    </div>
+
+    <!--  esto es la seccion buscar e ingresar -->
+
+    <div class="secciones-buscar-ingresar">
+
+
+        <div class="container-search">
+            <input type="search" [(ngModel)]="term" placeholder="Buscar">
+            <div class="btn-search">
+                <i class="input-icon uil uil-search-alt"></i>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="scroll-table">
+
+        <table>
+            <tr>
+                <th>CI Paciente</th>
+                <th>Nombres Paciente</th>
+                <th>Telefono Paciente</th>
+                <th>CI Medico</th>
+                <th>Nombres Medico</th>
+                <th>Telefono Medico</th>
+                <th>Especialidad</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Estado de cita</th>
+            </tr>
+            <tbody *ngIf="citas">
+                <tr *ngFor="let cita of citas | filter : term">
+                    <td>
+                        {{ cita.paciente.usuario.datos_personale.ci }}
+                    </td>
+                    <td>
+                        {{ cita.paciente.usuario.nombre | titlecase }} {{ cita.paciente.usuario.apellido | titlecase }}
+                    </td>
+                    <td>
+                        {{ cita.paciente.usuario.datos_personale.telefono | titlecase }}
+                    </td>
+                    <td> {{ cita.medico.usuario.datos_personale.ci }}</td>
+
+                    <td>
+                        {{ cita.medico.usuario.nombre | titlecase }} {{ cita.medico.usuario.apellido | titlecase }}
+                    </td>
+                    <td>
+                        {{ cita.medico.usuario.datos_personale.telefono | titlecase }}
+                    </td>
+                    <td>
+                        {{ cita.medico.especialidad.nombre | titlecase }}
+                    </td>
+                    <td>
+                        {{ cita.fecha | date }}
+                    </td>
+                    <td>
+                        De {{ cita.hora_inicio }} a {{cita.hora_fin}}
+                    </td>
+                    <td>
+                        {{cita.estado_cita.nombre}}
+                    </td>
+                </tr>
+            </tbody>
+            <!-- Agrega más filas según sea necesario -->
+        </table>
+    </div>
 </div>

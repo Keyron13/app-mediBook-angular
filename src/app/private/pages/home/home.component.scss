@@ -247,17 +247,17 @@ h1 {
   .title {
     font-weight: bold;
     margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .text {
     color: #3b3e41;
     font-weight: bold;
-    height: 70px;
+    height: 100px;
     margin: 0;
     padding-top: 10px;
     max-width: 100%; /* Evita el desbordamiento horizontal */
     /* white-space: nowrap; */ /* Evita el desbordamiento vertical */
-    overflow: hidden; /* Oculta el contenido adicional */
+    /* overflow: hidden; */ /* Oculta el contenido adicional */
     font-size: 100%; /* Tamaño de fuente inicial (puedes ajustarlo según tus necesidades) */
     /* text-overflow: ellipsis; */ /* Agrega puntos suspensivos (...) si el contenido se recorta */
   }
@@ -331,7 +331,7 @@ h1 {
 
   .data {
     color: $white;
-    transform: translateY(calc(70px + 4em));
+    transform: translateY(calc(93px + 4em));
   }
   .title {
     a {
@@ -343,13 +343,13 @@ h1 {
   .button {
     display: block;
     width: 100px;
-    margin: 2em auto 1em;
+    margin: auto;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     color: $white;
     line-height: 1;
     position: relative;
-    font-weight: 700;
+    font-weight: 550;
     &::after {
       content: '\2192';
       opacity: 0;

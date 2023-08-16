@@ -4,7 +4,7 @@
 
     <!-- siempre va igual es la parte de arriba -->
     <div class="img-banner">
-        <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1692135775/Imagenes-MediBook/img/estetoscopio-sobre-informacion-paciente_yb1kit.jpg" alt="">
+        <img class="banner" src="https://res.cloudinary.com/duhm7ousd/image/upload/v1692220530/Imagenes-MediBook/img/horarios_luvi7t.png" alt="">
     </div>
 
     <div class="texto-animado">
@@ -86,8 +86,8 @@
                         {{horario.hora_fin}}
                     </td>
                     <td *ngIf="user.rol_id==1">
-                        <button (click)="edit(horario.id)">Editar</button>
-                        <button (click)="delete(horario.id)">Eliminar</button>
+                      <button class="update" (click)="edit(horario.id)"><i class="input-icon uil uil-edit"></i></button>
+                      <button class="delete" (click)="delete(horario.id)"><i class="input-icon uil uil-trash-alt"></i></button>
                     </td>
 
                 </tr>

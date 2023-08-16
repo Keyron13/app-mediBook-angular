@@ -19,9 +19,8 @@ body{
   text-align: center;
   align-items: center;
   width: 95%;
-  height: 80.1%;
+  height: 78.5%;
   margin: auto;
-  background-color: #2ecc7047; /* fondo */
 }
 
 .animacion{
@@ -33,13 +32,11 @@ body{
 }
 
 .cards{
-  background-color: aqua;
-  width: 70%;
+  width: 77.5%;
 }
 
 .separador{
-  background-color: brown;
-  width: 30%;
+  width: 22.5%;
 }
 
 
@@ -158,4 +155,215 @@ h1{
     30% {width:210px;}
     80% {opacity:1;}
     100% {opacity:0;width:210px;}
+}
+
+
+.card:hover{
+  .wrapper{
+    transform: scale(0.95);
+  }
+}
+
+/* cards */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+// Variables
+$regal-blue: #034378;
+$san-juan: #2d4e68;
+$bermuda: #77d7b9;
+$white: #fff;
+$black: #000;
+$open-sans: 'Open Sans',
+sans-serif;
+// clear-fix mixin
+@mixin cf {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+  &::after {
+    clear: both;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: $open-sans;
+  font-weight: 300;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+// Base styles
+.card {
+  float: left;
+  padding: 0 0 0 1.5rem;
+  width: 100%;
+
+
+  .wrapper {
+    background-color: $white;
+    border-radius: 12px;
+    min-height: 260px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 19px 38px rgba($black, 0.3), 0 15px 12px rgba($black, 0.2);
+    &:hover {
+      .data {
+        transform: translateY(0);
+      }
+    }
+  }
+  .data {
+    position: absolute;
+    background-color: #b9bcbec3;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(calc(70px + 1em));
+    transition: transform 0.3s;
+    .content {
+      padding: 1em;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  .author {
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  .title {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .text {
+    color: #3b3e41;
+    font-weight: bold;
+    height: 70px;
+    margin: 0;
+    padding-top: 10px;
+    max-width: 100%; /* Evita el desbordamiento horizontal */
+    /* white-space: nowrap; */ /* Evita el desbordamiento vertical */
+    overflow: hidden; /* Oculta el contenido adicional */
+    font-size: 100%; /* Tamaño de fuente inicial (puedes ajustarlo según tus necesidades) */
+    /* text-overflow: ellipsis; */ /* Agrega puntos suspensivos (...) si el contenido se recorta */
+  }
+  input[type='checkbox'] {
+    display: none;
+  }
+}
+// Second example styles
+
+.img-1 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692159468/Imagenes-MediBook/img/medico-enfermeras-equipos-especiales_g94fg7.jpg) center / cover no-repeat;
+  }
+}
+
+.img-2 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692165449/Imagenes-MediBook/img/medicos-trabajando-duro_u0rabg.jpg) center / cover no-repeat;
+  }
+}
+
+.img-3 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692166030/Imagenes-MediBook/img/grupo-multietnico-tres-medicos-enfermeras-parados-pasillo-hospital-usando-batas-batas-equipo-trabajadores-salud-mira-camara-sonrie_jwbjej.jpg) center / cover no-repeat;
+  }
+}
+
+.img-4 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692166102/Imagenes-MediBook/img/doctor-comprobando-condicion-medica-paciente_j3sc9t.jpg) center / cover no-repeat;
+  }
+}
+
+.img-5 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692166291/Imagenes-MediBook/img/doctora-sosteniendo-despertador-uniforme-azul_tynefn.jpg) center / cover no-repeat;
+  }
+}
+
+.img-6 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692166432/Imagenes-MediBook/img/doctor-escribiendo-informe-medico_ibc82r.jpg) center / cover no-repeat;
+  }
+}
+
+.img-7 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692166491/Imagenes-MediBook/img/medico-vista-frontal-elemento-medico_g2cgnv.jpg) center / cover no-repeat;
+  }
+}
+
+.img-8 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692165898/Imagenes-MediBook/img/manos-doctora-irreconocible-escribiendo-forma-escribiendo-teclado-portatil_yb2aj7.jpg) center / cover no-repeat;
+  }
+}
+
+.img-9 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692166633/Imagenes-MediBook/img/revisar-aumentar-calificacion-o-clasificacion-evaluacion-concepto-clasificacion-empresario-dibujar-cinco-estrella-amarilla-aumentar-calificacion-su-empresa_cgw1te.jpg) center / cover no-repeat;
+  }
+}
+
+.img-10 {
+  .wrapper {
+    background: url(https://res.cloudinary.com/duhm7ousd/image/upload/v1692166784/Imagenes-MediBook/img/flat-lay-of-notebook-contrasena-laptop_fwrppj.jpg) center / cover no-repeat;
+  }
+}
+
+.example-2 {
+
+  .data {
+    color: $white;
+    transform: translateY(calc(70px + 4em));
+  }
+  .title {
+    a {
+      width: 100%;
+      height: 100%;
+      color: #F39C12;
+    }
+  }
+  .button {
+    display: block;
+    width: 100px;
+    margin: 2em auto 1em;
+    text-align: center;
+    font-size: 12px;
+    color: $white;
+    line-height: 1;
+    position: relative;
+    font-weight: 700;
+    &::after {
+      content: '\2192';
+      opacity: 0;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translate(0, -50%);
+      transition: all 0.3s;
+    }
+    &:hover {
+      &::after {
+        transform: translate(5px, -50%);
+        opacity: 1;
+      }
+    }
+  }
 }

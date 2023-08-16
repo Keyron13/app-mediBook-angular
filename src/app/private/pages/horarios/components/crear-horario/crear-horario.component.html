@@ -1,6 +1,6 @@
 <body *ngIf="user.rol_id==1">
+  <h1 class="texto">{{ horario_id == null ? "INGRESAR UN NUEVO HORARIO" : "ACTUALIZAR HORARIO" }}</h1>
     <div class="container">
-        <h2>Horarios Para medicos</h2>
         <form [formGroup]="FormLogin" (ngSubmit)="Horario()">
             <div class="input-group">
                 <label for="diaSemana">Medico:</label>
@@ -9,7 +9,7 @@
                     {{ medico.usuario.nombre + " " + medico.usuario.apellido | titlecase }} - <b>{{medico.usuario.datos_personale.ci}}</b>
                   </option>
                 </select>
-                <div *ngIf="FormLogin.get('medicos')?.invalid && FormLogin.get('medicos')?.touched">
+                <div class="span" *ngIf="FormLogin.get('medicos')?.invalid && FormLogin.get('medicos')?.touched" >
                     <span *ngIf="FormLogin.get('medicos')?.hasError('required')" style="color: red;"> El Medico es Requerido.</span>
                 </div>
             </div>
@@ -25,28 +25,26 @@
                   <option value="sabado">Sábado</option>
                   <option value="domingo">Domingo</option>
                 </select>
-                <div *ngIf="FormLogin.get('dias')?.invalid && FormLogin.get('dias')?.touched">
+                <div class="span" *ngIf="FormLogin.get('dias')?.invalid && FormLogin.get('dias')?.touched">
                     <span *ngIf="FormLogin.get('dias')?.hasError('required')" style="color: red;"> El dia es Requerido.</span>
                 </div>
             </div>
             <div class="input-group">
                 <label for="hora">Hora de Inicio:</label>
                 <input type="time" id="hora" name="horaI" formControlName="horaI">
-            </div>
-            <div *ngIf="FormLogin.get('horaI')?.invalid && FormLogin.get('horaI')?.touched">
-                <span *ngIf="FormLogin.get('horaI')?.hasError('required')" style="color: red;"> La Hora Inicial es Requerido.</span>
+                <div class="span" *ngIf="FormLogin.get('horaI')?.invalid && FormLogin.get('horaI')?.touched">
+                  <span *ngIf="FormLogin.get('horaI')?.hasError('required')" style="color: red;"> La Hora Inicial es Requerido.</span>
+              </div>
             </div>
 
             <div class="input-group">
                 <label for="hora">Hora de Salida:</label>
                 <input type="time" id="hora" name="horaF" formControlName="horaF">
+                <div class="span" *ngIf="FormLogin.get('horaF')?.invalid && FormLogin.get('horaF')?.touched">
+                  <span *ngIf="FormLogin.get('horaF')?.hasError('required')" style="color: red;"> La Hora Final es Requerido.</span>
+              </div>
             </div>
-            <div *ngIf="FormLogin.get('horaF')?.invalid && FormLogin.get('horaF')?.touched">
-                <span *ngIf="FormLogin.get('horaF')?.hasError('required')" style="color: red;"> La Hora Final es Requerido.</span>
-            </div>
-
-
-            <button class="button" type="submit" [disabled]="FormLogin.invalid">{{horario_id==null?'Enviar':'Editar'}}</button>
+            <button class="button" type="submit" [disabled]="FormLogin.invalid"><h2 class="txt-boton">{{horario_id==null?'Enviar':'Editar'}}</h2></button>
         </form>
     </div>
 

@@ -15,7 +15,7 @@ export class TableHorariosComponent {
 
   @Input() horarios:any;
   @Input() user:any;
- 
+
   constructor(private horarioService:HorarioService,private toastService:ToastrService,private eventEmitter:EventEmitterService,public dialog: MatDialog ){
   }
   delete(id:any){
@@ -29,6 +29,6 @@ export class TableHorariosComponent {
   }
 
   openDialog(){
-    this.dialog.open(CrearHorarioComponent,{width:'50%', height:'500px'});
+    this.dialog.open(CrearHorarioComponent,{width:'50%', height:'550px'});
   }
 }

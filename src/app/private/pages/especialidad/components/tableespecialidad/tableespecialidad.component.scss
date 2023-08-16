@@ -332,3 +332,11 @@ input {
 		}
 	}
 }
+
+
+
+.estatico{
+  position: sticky;
+  top: 0px;
+  animation-timeline: scroll();
+}

@@ -28,7 +28,7 @@ export class CrearTituloComponent {
     private readonly medicoService: MedicoService,
     private eventEmitter: EventEmitterService,
     private readonly eventEmitterService: EventEmitterService,
-    private matDialog: MatDialog
+    private matDialog: MatDialog,
   ) {
     authService.userInformation().subscribe((data) => {
       if (data.user.rol_id !== 1) {

@@ -1,18 +1,25 @@
 <body *ngIf="user.rol_id==1">
   <h1 class="texto">{{ horario_id == null ? "INGRESAR UN NUEVO HORARIO" : "ACTUALIZAR HORARIO" }}</h1>
     <div class="container">
+
         <form [formGroup]="FormLogin" (ngSubmit)="Horario()">
+
             <div class="input-group">
+
                 <label for="diaSemana">Medico:</label>
+
                 <select *ngIf="medicos|async as medicos" id="diaSemana" name="diaSemana" formControlName="medicos" required>
                   <option *ngFor="let medico of medicos" [value]="medico.id">
                     {{ medico.usuario.nombre + " " + medico.usuario.apellido | titlecase }} - <b>{{medico.usuario.datos_personale.ci}}</b>
                   </option>
                 </select>
+
                 <div class="span" *ngIf="FormLogin.get('medicos')?.invalid && FormLogin.get('medicos')?.touched" >
                     <span *ngIf="FormLogin.get('medicos')?.hasError('required')" style="color: red;"> El Medico es Requerido.</span>
                 </div>
+
             </div>
+            
             <div class="input-group">
                 <label for="diaSemana">Día de la Semana:</label>
                 <select id="diaSemana" name="diaSemana" formControlName="dias" required>

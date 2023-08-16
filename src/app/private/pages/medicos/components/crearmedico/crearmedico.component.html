@@ -2,8 +2,9 @@
 <div mat-dialog-content class="container">
   <div style="width: 40%;">
   </div>
-  <div style="width: 60%;">
-    <form
+  <div style="width: 60%; height: 100%;">
+    <div class="scroll-table">
+      <form
     class="form"
     [formGroup]="FormMedico"
     (ngSubmit)="Crear(FormMedico.value)"
@@ -283,7 +284,8 @@
       {{ medico_id == null ? "Enviar" : "Editar" }}
     </button>
 
-  </form>
+    </form>
+    </div>
   </div>
 
 </div>

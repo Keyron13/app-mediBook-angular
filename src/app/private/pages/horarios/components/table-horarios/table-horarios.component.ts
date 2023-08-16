@@ -16,8 +16,22 @@ export class TableHorariosComponent {
   @Input() horarios:any;
   @Input() user:any;
 
-  constructor(private horarioService:HorarioService,private toastService:ToastrService,private eventEmitter:EventEmitterService,public dialog: MatDialog ){
+  constructor(private horarioService:HorarioService,private toastService:ToastrService,private eventEmitter:EventEmitterService,public dialog: MatDialog )
+  {
+    this.eventEmitter.getEvent().subscribe(event => {
+      if(event.event=="crear_horario"){ /* esto es el llamado con su nombre que esta en el crear */
+        this.getHorarios();
+      }
+    })
   }
+
+  getHorarios() {  /* esto se escogio de el crear del metodo get */
+    this.horarioService.obtenerTodos().subscribe((data) => {
+      console.log(data);
+      this.horarios = data.Horario;
+    });
+  }
+
   delete(id:any){
     this.horarioService.delete(id).subscribe((data)=>{
       this.toastService.success('Horario eliminado','Proceso exitoso');
@@ -25,7 +39,8 @@ export class TableHorariosComponent {
     })
   }
   edit(id:any){
-      this.eventEmitter.setEvent({event:'EDIT_HORARIO',id:id});
+    this.eventEmitter.setEvent({event:'EDIT_HORARIO',id:id});
+    this.openDialog();
   }
 
   openDialog(){

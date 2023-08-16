@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/public/services/auth.service';
-import { UserService } from 'src/app/private/services/user.service'; 
-import { ResetpasswordService } from 'src/app/private/services/resetpassword.service'; 
-import { EventEmitterService } from 'src/app/private/services/eventEmitter.service'; 
+import { UserService } from 'src/app/private/services/user.service';
+import { ResetpasswordService } from 'src/app/private/services/resetpassword.service';
+import { EventEmitterService } from 'src/app/private/services/eventEmitter.service';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class CrearResetPasswordComponent {
     private notificacion: ToastrService,
     private userService: UserService,
     private resetPasswordService: ResetpasswordService,
-    private eventEmmiterService:EventEmitterService
+    private eventEmmiterService:EventEmitterService,
+    private matDialog: MatDialog,
 ){
     authService.userInformation().subscribe(data=>{
       if(data.user.rol_id!==1){
@@ -53,6 +55,7 @@ onSubmit(value:any){
     const id=this.FormResetPassword.get('user_id')?.value
     this.resetPasswordService.resetPassword(body,id).subscribe((data)=>{
       this.notificacion.success('Contraseña cambiada exitosamente','Proceso exitoso');
+      this.matDialog.closeAll();
       this.FormResetPassword.reset()
     })
   }

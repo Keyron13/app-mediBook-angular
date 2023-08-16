@@ -37,7 +37,7 @@ export class TableTitulosComponent {
   }
   edit(id:any){
     this.openDialog();
-      this.eventEmitter.setEvent({event:'EDIT_TITULO',id:id});
+    this.eventEmitter.setEvent({event:'EDIT_TITULO',id:id});
   }
 
   openDialog(){

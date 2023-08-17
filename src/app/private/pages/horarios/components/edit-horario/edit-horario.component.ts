@@ -18,7 +18,7 @@ export class EditHorarioComponent {
   medicos!: Observable<any>;
   horarios!: any;
   user: any;
-  horario_id:any
+  horario_id: any;
   constructor(
     private readonly router: Router,
     private formBuilder: FormBuilder,
@@ -33,7 +33,7 @@ export class EditHorarioComponent {
     this.buildForm();
 
     this.horario_id = id;
-    console.log(this.horario_id)
+    console.log(this.horario_id);
     this.findHorarioFillForm(this.horario_id);
     this.authService.userInformation().subscribe((data) => {
       this.user = data.user;
@@ -98,29 +98,27 @@ export class EditHorarioComponent {
       );
       return;
     }
-    if (this.horario_id != null) {
-      const body = {
+
+    const formattedTimeStart = this.convertTimeStringToTimeObject(
+      this.FormLogin.get('horaI')?.value
+    );
+    const formattedTimeEnd = this.convertTimeStringToTimeObject(
+      this.FormLogin.get('horaF')?.value
+    );
+    const horai = this.convertISOToTimeString(formattedTimeStart);
+    const horaf = this.convertISOToTimeString(formattedTimeEnd);
+    const body = {
+      hora_inicio: horai,
+      hora_fin: horaf,
+    };
+    console.log(body);
+     return this.editHorario(body);
+    // Salida: "17:48"
+    /* const body = {
         hora_inicio: this.FormLogin.get('horaI')?.value,
         hora_fin: this.FormLogin.get('horaF')?.value,
       };
-      return this.editHorario(body);
-    }
-    const body = {
-      dia: this.FormLogin.get('dias')?.value,
-      hora_inicio: this.FormLogin.get('horaI')?.value,
-      hora_fin: this.FormLogin.get('horaF')?.value,
-      medico_id: this.FormLogin.get('medicos')?.value,
-    };
-    console.log(body);
-    this.horarioService.create(body).subscribe((data) => {
-      this.notificacion.success('Horario asignado', 'Proceso exitoso');
-      /* this.getHorarios(); */
-      this.eventEmitter.setEvent({
-        event: 'CREAR_HORARIO',
-      }); /* se crea para actualizar la tabla junto con el componente tabla */
-      this.matDialog.closeAll(); /* se agrega para cerrar el formulario */
-      this.FormLogin.reset();
-    });
+      return this.editHorario(body); */
 
     // Realiza acciones si todas las validaciones son exitosas
   }
@@ -159,4 +157,21 @@ export class EditHorarioComponent {
       this.FormLogin.get('medicos')?.disable();
     });
   }
+
+  private convertTimeStringToTimeObject(inputTimeString: any): Date {
+    const [hours, minutes] = inputTimeString.split(':');
+    const dateObj = new Date();
+    dateObj.setHours(Number(hours));
+    dateObj.setMinutes(Number(minutes));
+    dateObj.setSeconds(0);
+    return dateObj;
+}
+
+private convertISOToTimeString(inputTimeISO: any): string {
+    const dateObj = new Date(inputTimeISO);
+    const hours = dateObj.getHours().toString().padStart(2, '0');
+    const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}`;
+    return formattedTime;
+}
 }

@@ -46,8 +46,8 @@ export class CrearmedicoComponent implements OnInit{
     this.FormMedico = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       apellido: ['', [Validators.required]],
-      ci: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10)]],
-      telefono: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10)]],
+      ci: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10),Validators.minLength(10)]],
+      telefono: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10),Validators.minLength(10)]],
       fecha: ['', [Validators.required]],
       especialidad_id: ['', [Validators.required]],
       provincia: ['', [Validators.required]],

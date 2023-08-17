@@ -93,6 +93,12 @@
           10 Caracteres como Máximo.
         </div>
         <div class="span"
+        *ngIf="FormMedico.get('ci')?.hasError('minlength')"
+        style="color: red"
+      >
+        10 Caracteres como Minimo.
+      </div>
+        <div class="span"
           *ngIf="FormMedico.get('ci')?.hasError('pattern')"
           style="color: red"
         >
@@ -126,6 +132,12 @@
           style="color: red"
         >
           10 Caracteres como Máximo.
+        </div>
+        <div class="span"
+          *ngIf="FormMedico.get('telefono')?.hasError('minlength')"
+          style="color: red"
+        >
+          10 Caracteres como Minimo.
         </div>
         <div class="span"
           *ngIf="FormMedico.get('telefono')?.hasError('pattern')"

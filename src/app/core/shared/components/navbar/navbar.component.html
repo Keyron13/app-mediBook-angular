@@ -41,7 +41,7 @@
       </button>
     </div>
 
-    <div>
+    <div *ngIf="user?.rol_id===1">
       <button class="boton" [routerLink]="['/horarios']"
       routerLinkActive="router-link-active">
         <i class="input-icon uil uil-clock-three"></i>

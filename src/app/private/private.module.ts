@@ -33,6 +33,7 @@ import { CrearEspecialidadComponent } from './pages/especialidad/components/crea
 import { CrearTituloComponent } from './pages/titulos/components/crear-titulo/crear-titulo.component';
 import { CrearHorarioComponent } from './pages/horarios/components/crear-horario/crear-horario.component';
 import { CrearResetPasswordComponent } from './pages/reset-password/components/crear-reset-password/crear-reset-password.component';
+import { EditHorarioComponent } from './pages/horarios/components/edit-horario/edit-horario.component';
 @NgModule({
   declarations: [
     HomeComponent,
@@ -62,7 +63,8 @@ import { CrearResetPasswordComponent } from './pages/reset-password/components/c
     CrearEspecialidadComponent,
     CrearTituloComponent,
     CrearHorarioComponent,
-    CrearResetPasswordComponent
+    CrearResetPasswordComponent,
+    EditHorarioComponent
   ],
   imports: [
     CommonModule,

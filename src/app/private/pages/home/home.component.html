@@ -23,13 +23,13 @@
 
       <div class="row">
 
-        <div class="example-2 card img-1">
-          <a href="/#/medicos">
+        <div class="example-2 card img-1" *ngIf="user.rol.nombre==='Admin'">
+          <a [routerLink]="['/medicos']" >
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/medicos" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/medicos">MEDICOS</a></h1>
+                  <a [routerLink]="['/medicos']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['/medicos']">MEDICOS</a></h1>
                   <p class="text">En esta página encontraras todos los medicos suscritos a MediBook.</p>
                 </div>
               </div>
@@ -37,13 +37,13 @@
           </a>
         </div>
 
-        <div class="example-2 card img-2">
-          <a href="/#/especialidad">
+        <div class="example-2 card img-2" *ngIf="user.rol.nombre==='Admin'">
+          <a [routerLink]="['/especialidad']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/especialidad" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/especialidad" style="font-size: 90%;">ESPECIALIDAD</a></h1>
+                  <a [routerLink]="['especialidad']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['especialidad']" style="font-size: 90%;">ESPECIALIDAD</a></h1>
                   <p class="text">En esta página encontraras las especialidades los medicos de MediBook.</p>
                 </div>
               </div>
@@ -51,13 +51,13 @@
           </a>
         </div>
 
-        <div class="example-2 card img-3">
-          <a href="/#/titulos">
+        <div class="example-2 card img-3" *ngIf="user.rol.nombre==='Admin'">
+          <a [routerLink]="['/titulos']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/titulos" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/titulos">TÍTULOS</a></h1>
+                  <a [routerLink]="['/titulos']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['/titulos']">TÍTULOS</a></h1>
                   <p class="text">En esta página encontraras los títulos de los medicos de MediBook.</p>
                 </div>
               </div>
@@ -65,13 +65,13 @@
           </a>
         </div>
 
-        <div class="example-2 card img-4">
-          <a href="/#/citas">
+        <div class="example-2 card img-4" >
+          <a  [routerLink]="['/citas']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/citas" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/citas">CITAS</a></h1>
+                  <a  [routerLink]="['citas']" class="button">Ir a sección</a>
+                  <h1 class="title"><a  [routerLink]="['citas']">CITAS</a></h1>
                   <p class="text">En esta página encontraras todas las citas medicas de MediBook.</p>
                 </div>
               </div>
@@ -79,13 +79,13 @@
           </a>
         </div>
 
-        <div class="example-2 card img-5">
-          <a href="/#/horarios">
+        <div class="example-2 card img-5" *ngIf="user.rol.nombre==='Admin'">
+          <a [routerLink]="['/horarios']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/horarios" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/horarios">HORARIOS</a></h1>
+                  <a [routerLink]="['/horarios']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['/horarios']">HORARIOS</a></h1>
                   <p class="text">En esta página encontraras todos los horarios de los medicos de MediBook.</p>
                 </div>
               </div>
@@ -94,14 +94,14 @@
         </div>
       </div>
 
-      <div class="row" style="margin-top: 30px;">
+      <div class="row" style="margin-top: 30px;" >
         <div class="example-2 card img-6">
-          <a href="/#/observaciones">
+          <a [routerLink]="['/observaciones']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/observaciones" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/observaciones" style="font-size: 81%;">OBSERVACIONES</a></h1>
+                  <a [routerLink]="['observaciones']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['observaciones']" style="font-size: 81%;">OBSERVACIONES</a></h1>
                   <p class="text">En esta página encontraras todas las obeservaciones de los medicos en MediBook.</p>
                 </div>
               </div>
@@ -110,12 +110,12 @@
         </div>
 
         <div class="example-2 card img-7">
-          <a href="/#/pagos">
+          <a [routerLink]="['/pagos']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/pagos" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/pagos">PAGOS</a></h1>
+                  <a [routerLink]="['pagos']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['pagos']">PAGOS</a></h1>
                   <p class="text">En esta página encontraras todos los pagos de MediBook.</p>
                 </div>
               </div>
@@ -124,12 +124,12 @@
         </div>
 
         <div class="example-2 card img-8">
-          <a href="/#/recetas">
+          <a [routerLink]="['/recetas']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/recetas" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/recetas">RECETAS</a></h1>
+                  <a [routerLink]="['recetas']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['recetas']">RECETAS</a></h1>
                   <p class="text">En esta página encontraras todas las recetas medicas de MediBook.</p>
                 </div>
               </div>
@@ -138,12 +138,12 @@
         </div>
 
         <div class="example-2 card img-9">
-          <a href="/#/resenias">
+          <a [routerLink]="['/resenias']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/resenias" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/resenias">RESEÑAS</a></h1>
+                  <a [routerLink]="['resenias']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['resenias']">RESEÑAS</a></h1>
                   <p class="text">En esta página encontraras todas las reseñas de los medicos de MediBook.</p>
                 </div>
               </div>
@@ -151,13 +151,13 @@
           </a>
         </div>
 
-        <div class="example-2 card img-10">
-          <a href="/#/reset-password">
+        <div class="example-2 card img-10" *ngIf="user.rol.nombre==='Admin'">
+          <a [routerLink]="['/reset-password']">
             <div class="wrapper">
               <div class="data">
                 <div class="content">
-                  <a href="/#/reset-password" class="button">Ir a sección</a>
-                  <h1 class="title"><a href="/#/reset-password" style="font-size: 85%;">RESET/PASS</a></h1>
+                  <a [routerLink]="['reset-password']" class="button">Ir a sección</a>
+                  <h1 class="title"><a [routerLink]="['reset-password']" style="font-size: 85%;">RESET/PASS</a></h1>
                   <p class="text">En esta página encontraras la opción para restablecer la contraseña de MediBook.</p>
                 </div>
               </div>

@@ -47,6 +47,7 @@ export class CrearTituloComponent {
         this.getTitulos();
       }
       if (data.event === 'EDIT_TITULO') {
+        console.log("evento de titulo actualizar")
         this.titulo_id = data.id;
         this.findTituloFillForm(data.id);
       }

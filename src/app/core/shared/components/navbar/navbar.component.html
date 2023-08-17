@@ -23,7 +23,7 @@
     </button>
 
     <div *ngIf="user?.rol_id===1" >
-      <button class="boton" [routerLink]="['especialidad']">
+      <button class="boton" [routerLink]="['/especialidad']">
         <i class="input-icon uil uil-edit"></i>
         <h2 class="texto-none-todo">Especialidad</h2>
       </button>
@@ -57,28 +57,28 @@
     </div>
 
     <div>
-      <button class="boton" [routerLink]="['pagos']">
+      <button class="boton" [routerLink]="['/pagos']">
         <i class="input-icon uil uil-usd-square"></i>
         <h2 class="texto-none-todo">Pago</h2>
       </button>
     </div>
 
     <div>
-      <button class="boton" [routerLink]="['recetas']">
+      <button class="boton" [routerLink]="['/recetas']">
         <i class="input-icon uil uil-book"></i>
         <h2 class="texto-none-todo">Receta</h2>
       </button>
     </div>
 
     <div>
-      <button class="boton" [routerLink]="['resenias']">
+      <button class="boton" [routerLink]="['/resenias']">
         <i class="input-icon uil uil-file-blank"></i>
         <h2 class="texto-none-todo">Reseñas</h2>
       </button>
     </div>
 
     <div *ngIf="user?.rol_id===1">
-      <button class="boton" [routerLink]="['reset-password']"  >
+      <button class="boton" [routerLink]="['/reset-password']"  >
         <i class="input-icon uil uil-keyhole-square"></i>
         <h2 class="texto-none-todo">Reset Password</h2>
       </button>

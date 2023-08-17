@@ -1,23 +1,24 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { HorarioService } from '../../services/horario.service';
 import { Observable, map } from 'rxjs';
-import { MedicoService } from '../../services/medico.service';
-import { EventEmitterService } from '../../services/eventEmitter.service';
+import { EventEmitterService } from 'src/app/private/services/eventEmitter.service';
+import { HorarioService } from 'src/app/private/services/horario.service';
+import { MedicoService } from 'src/app/private/services/medico.service';
 import { AuthService } from 'src/app/public/services/auth.service';
 
 @Component({
-  selector: 'app-horarios',
-  templateUrl: './horarios.component.html',
-  styleUrls: ['./horarios.component.scss'],
+  selector: 'app-edit-horario',
+  templateUrl: './edit-horario.component.html',
+  styleUrls: ['./edit-horario.component.scss'],
 })
-export class HorariosComponent implements OnInit {
+export class EditHorarioComponent {
   medicos!: Observable<any>;
   horarios!: any;
-  user:any;
-  horario_id: any = null;
+  user: any;
+  horario_id:any
   constructor(
     private readonly router: Router,
     private formBuilder: FormBuilder,
@@ -25,10 +26,15 @@ export class HorariosComponent implements OnInit {
     private horarioService: HorarioService,
     private medicoService: MedicoService,
     private eventEmitter: EventEmitterService,
-    private authService: AuthService,private cdr: ChangeDetectorRef
+    private authService: AuthService,
+    private matDialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) private id: any
   ) {
+    this.horario_id = id;
+    console.log(this.horario_id)
+    this.findHorarioFillForm(this.horario_id);
     this.authService.userInformation().subscribe((data) => {
-      this.user=data.user
+      this.user = data.user;
       if (data.user.rol_id == 2) {
         this.medicoService
           .allMedico()
@@ -36,28 +42,15 @@ export class HorariosComponent implements OnInit {
           .subscribe((data) => {
             this.horarios = data;
           });
-      }else{
+      } else {
         this.medicos = this.medicoService
-        .obtenerTodos()
-        .pipe(map((res) => res.medicos));
-      this.getHorarios();
-      this.eventEmitter.getEvent().subscribe((data) => {
-        if (data.event === 'DELETE_HORARIO'||data.event==='CREAR_HORARIO') {
-          this.getHorarios();
-        }
-      });
+          .obtenerTodos()
+          .pipe(map((res) => res.medicos));
       }
     });
-
-  }
-
-ngAfterViewInit() {
-  // Your code causing the change
-  this.cdr.detectChanges();
-}
-  ngOnInit(): void {
     this.buildForm();
   }
+
   FormLogin!: FormGroup;
   buildForm() {
     this.FormLogin = this.formBuilder.group({
@@ -109,7 +102,7 @@ ngAfterViewInit() {
         hora_inicio: this.FormLogin.get('horaI')?.value,
         hora_fin: this.FormLogin.get('horaF')?.value,
       };
-     /*  return this.editHorario(body); */
+      return this.editHorario(body);
     }
     const body = {
       dia: this.FormLogin.get('dias')?.value,
@@ -120,40 +113,49 @@ ngAfterViewInit() {
     console.log(body);
     this.horarioService.create(body).subscribe((data) => {
       this.notificacion.success('Horario asignado', 'Proceso exitoso');
+      /* this.getHorarios(); */
+      this.eventEmitter.setEvent({
+        event: 'CREAR_HORARIO',
+      }); /* se crea para actualizar la tabla junto con el componente tabla */
+      this.matDialog.closeAll(); /* se agrega para cerrar el formulario */
       this.FormLogin.reset();
-      this.getHorarios();
     });
 
     // Realiza acciones si todas las validaciones son exitosas
   }
-  getHorarios() {
+  /* getHorarios() {
     this.horarioService.obtenerTodos().subscribe((data) => {
       console.log(data);
-      this.horarios = data.Horario;
+      this.horarios = data.horarios;
     });
-  }
- /*  editHorario(body: any) {
+  } */
+  editHorario(body: any) {
     this.horarioService.update(body, this.horario_id).subscribe((data) => {
-      this.notificacion.success('Titulo actualizado', 'Proceso exitoso');
-      this.getHorarios();
+      this.notificacion.success('Horario actualizado', 'Proceso exitoso');
+      /* this.getHorarios(); */
+      this.eventEmitter.setEvent({
+        event: 'CREAR_HORARIO',
+      }); /* se crea para actualizar la tabla junto con el componente tabla */
+      this.matDialog.closeAll(); /* se agrega para cerrar el formulario */
       this.FormLogin.reset();
       this.FormLogin.get('dias')?.enable();
       this.FormLogin.get('medicos')?.enable();
 
       this.horario_id = null;
     });
-  } */
- /*  findHorarioFillForm(id: any) {
+  }
+  findHorarioFillForm(id: any) {
     this.horarioService.obtenerUno(id).subscribe((data) => {
       console.log(data.Horario);
-       this.FormLogin.setValue({
+      this.FormLogin.setValue({
         medicos: data.Horario.medico_id,
         dias: data.Horario.dia,
         horaI: data.Horario.hora_inicio,
         horaF: data.Horario.hora_fin,
       });
+
       this.FormLogin.get('dias')?.disable();
       this.FormLogin.get('medicos')?.disable();
     });
-  } */
+  }
 }

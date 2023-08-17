@@ -30,6 +30,8 @@ export class EditHorarioComponent {
     private matDialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) private id: any
   ) {
+    this.buildForm();
+
     this.horario_id = id;
     console.log(this.horario_id)
     this.findHorarioFillForm(this.horario_id);
@@ -48,7 +50,6 @@ export class EditHorarioComponent {
           .pipe(map((res) => res.medicos));
       }
     });
-    this.buildForm();
   }
 
   FormLogin!: FormGroup;

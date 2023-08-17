@@ -15,6 +15,7 @@ export class NavbarComponent {
   }
   logout(){
     this.authService.logout().subscribe(data=>{
+      localStorage.removeItem('rol');
       this.authService.deleteToken();
       this.router.navigate(['/login']);
       this.toastService.success('Has finalizado la sesión','Proceso exitoso')

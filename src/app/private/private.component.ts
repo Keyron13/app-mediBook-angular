@@ -11,6 +11,7 @@ export class PrivateComponent {
   constructor(private authService:AuthService){
     authService.userInformation().subscribe((data)=>{
       this.user=data.user;
+      localStorage.setItem('rol',this.user.rol.nombre);
       console.log(this.user)
     })
   }

@@ -24,13 +24,9 @@ export class MedicosComponent{
     private notificacion:ToastrService,
     public dialog: MatDialog,){
 
-    authService.userInformation().subscribe(data=>{
-      if(data.user.rol_id!==1){
-        this.router.navigate(['home']);
+      if(localStorage.getItem('rol')!=='Admin'){
+        this.router.navigate(['/home'])
       }
-    },()=>{
-      this.router.navigate(['home']);
-    });
 
     eventEmitter.getEvent().subscribe(even=>{
       if(even.event=='DELETE_MEDICO'||even.event=='CREATE_MEDICO'){

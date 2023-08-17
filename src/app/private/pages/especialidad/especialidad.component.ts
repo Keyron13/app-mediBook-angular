@@ -23,11 +23,9 @@ export class EspecialidadComponent {
     private readonly eventEmitterService: EventEmitterService,
     private readonly formBuilder:FormBuilder
   ) {
-    authService.userInformation().subscribe((data) => {
-      if (data.user.rol_id !== 1) {
-        this.router.navigate(['home']);
-      }
-    });
+    if(localStorage.getItem('rol')!=='Admin'){
+      this.router.navigate(['/home'])
+    }
     this.buildForm();
     this.getEspecialidades()
     this.eventEmitterService.getEvent().subscribe(data=>{

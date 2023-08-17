@@ -27,13 +27,9 @@ export class TitulosComponent {
     private readonly medicoService: MedicoService,
     private eventEmitter: EventEmitterService
   ) {
-    authService.userInformation().subscribe((data) => {
-      if (data.user.rol_id !== 1) {
-        this.router.navigate(['home']);
-      }
-    },()=>{
-      this.router.navigate(['home']);
-    });
+    if(localStorage.getItem('rol')!=='Admin'){
+      this.router.navigate(['/home'])
+    }
 
     this.medicos = this.medicoService
       .obtenerTodos()

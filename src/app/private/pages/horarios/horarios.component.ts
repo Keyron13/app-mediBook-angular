@@ -27,6 +27,9 @@ export class HorariosComponent implements OnInit {
     private eventEmitter: EventEmitterService,
     private authService: AuthService,private cdr: ChangeDetectorRef
   ) {
+    if(localStorage.getItem('rol')!=='Admin'){
+      this.router.navigate(['/home'])
+    }
     this.authService.userInformation().subscribe((data) => {
       this.user=data.user
       if (data.user.rol_id == 2) {

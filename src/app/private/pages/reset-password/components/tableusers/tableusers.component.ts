@@ -13,15 +13,9 @@ export class TableusersComponent {
   term!:string;
   @Input() users:any;
   constructor(private eventEmitterService:EventEmitterService,  public dialog: MatDialog){}
-  seleccion(user_id:any){
+  seleccion(user:any){
     console.log('emitir seleccion')
-    this.eventEmitterService.setEvent({
-      event:'SELECCION_USER_RESET_PASSWORD',
-      id:user_id
-    })
-  }
+    this.dialog.open(CrearResetPasswordComponent,{width:'50%', height:'500px',data:user});
 
-   openDialog(){
-    this.dialog.open(CrearResetPasswordComponent,{width:'50%', height:'500px'});
   }
 }
